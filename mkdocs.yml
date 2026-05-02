@@ -2,7 +2,6 @@ site_name: Book of Huawei
 
 # Додайте цю секцію para налаштування плагінів
 plugins:
-  - myst_parser
   - search # Вбудований плагін пошуку
   - table-reader # Ваш плагін для читання таблиць з Excel
   - glightbox # Плагін для гарної галереї зображень
