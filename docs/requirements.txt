@@ -3,3 +3,4 @@ mkdocs
 mkdocs-table-reader-plugin
 mkdocs-glightbox
 mkdocs-with-pdf
+myst-parser
