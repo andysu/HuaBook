@@ -68,13 +68,13 @@ jobs:
             'pdf_options:',
             '  format: A4',
             '  margin:',
-            '    top: 28mm',      // збільшено під header
-            '    bottom: 25mm',   // збільшено під footer
+            '    top: 28mm',
+            '    bottom: 25mm',
             '    left: 15mm',
             '    right: 15mm',
             '  displayHeaderFooter: true',
-            `  headerTemplate: '${header}'`,
-            `  footerTemplate: '${footer}'`,
+            `  headerTemplate: '${header.replace(/'/g, "''")}'`,   // ← escape '
+            `  footerTemplate: '${footer.replace(/'/g, "''")}'`,   // ← escape '
             '---',
             ''
           ].join('\n');
