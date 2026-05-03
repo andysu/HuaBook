@@ -19,7 +19,7 @@ master_doc = 'index'
 html_theme = 'sphinx_rtd_theme'
 
 # --- PDF SETTINGS (rinohtype) ---
-extensions.append('rinohtype')
+extensions.append('rinoh.frontend.sphinx')
 
 rinoh_documents = [('index', 'huabook', 'Huawei SUN2000 Book', 'You', 'manual')]
 
