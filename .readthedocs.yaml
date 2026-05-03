@@ -10,11 +10,6 @@ build:
   tools:
     python: "3.11"
 
-apt_packages: # Це критично для генерації PDF
-    - libpango1.0-0
-    - libcairo2
-    - libgdk-pixbuf2.0-0
-
 # Build documentation with MkDocs
 mkdocs:
   configuration: mkdocs.yml
