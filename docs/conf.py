@@ -23,10 +23,10 @@ latex_engine = 'xelatex'
 latex_elements = {
     'papersize': 'a4paper',
     'pointsize': '11pt',
-    'preamble': r'''
+    'fontpkg': r'''
 \usepackage{fontspec}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
 ''',
 }
 
