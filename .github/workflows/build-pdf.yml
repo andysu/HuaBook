@@ -9,13 +9,11 @@ jobs:
         run: |
           pip install sphinx myst-parser sphinx-rtd-theme rinohtype
           rinoh --version
-      - name: Build PDF with xelatex
+      - name: Build PDF with rinohtype
         run: |
           cd docs
-          sphinx-build -b latex . _build/latex
-          cd _build/latex
-          xelatex -interaction=nonstopmode huabook.tex
-          xelatex -interaction=nonstopmode huabook.tex
+          sphinx-build -b rinoh . _build/rinoh
+          ls -la _build/rinoh/
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
