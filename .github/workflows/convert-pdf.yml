@@ -1,29 +1,46 @@
-# .github/workflows/convert-pdf.yml
-name: Convert MD to PDF
+name: Convert HuaweiBook to PDF
 
 on:
   push:
+    branches:
+      - main
+      - master
     paths:
-      - '**.md'
+      - 'docs/HuaweiBook.md'
+
+permissions:
+  contents: write
 
 jobs:
   convert:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
 
-      - name: Convert to PDF
-        run: md-to-pdf your-document.md
+      - name: Install Cyrillic fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-dejavu fonts-liberation fonts-noto
 
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: document-pdf
-          path: your-document.pdf
+      - name: Convert docs/HuaweiBook.md → docs/HuaweiBook.pdf
+        run: |
+          md-to-pdf docs/HuaweiBook.md \
+            --pdf-options '{"format":"A4","margin":{"top":"20mm","bottom":"20mm","left":"15mm","right":"15mm"}}'
+
+      - name: Commit docs/HuaweiBook.pdf to repository
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/HuaweiBook.pdf
+          git diff --staged --quiet || git commit -m "ci: auto-generate docs/HuaweiBook.pdf [skip ci]"
+          git push
