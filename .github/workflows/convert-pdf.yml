@@ -31,9 +31,12 @@ jobs:
             fonts-open-sans \
             fonts-dejavu \
             fonts-noto \
-            ghostscript
+            ghostscript \
+            chromium-browser
           pip install img2pdf --break-system-packages
-          npm install -g md-to-pdf
+          # marked: MD→HTML  |  puppeteer: HTML→PDF  (no md-to-pdf, no YAML parser)
+          npm install -g marked
+          npm install -g puppeteer
 
       # ── cover.png → cover_tmp.pdf ────────────────────────────────────────────
       - name: Convert cover.png → PDF
@@ -43,82 +46,89 @@ jobs:
             --fit shrink \
             -o docs/cover_tmp.pdf
 
-      # ── Препроцесинг: лише розриви сторінок, БЕЗ front matter ───────────────
-      - name: Add page breaks
+      # ── MD → HTML → PDF (повністю без YAML) ─────────────────────────────────
+      - name: Convert MD → PDF
         run: |
-          node - <<'EOF'
-          const fs = require('fs');
+          node - <<'SCRIPT'
+          const fs       = require('fs');
+          const path     = require('path');
+          const { execSync } = require('child_process');
 
-          const lines = fs.readFileSync('docs/HuaweiBook.md', 'utf8').split('\n');
-          const out = [];
+          // ── 1. Розриви сторінок ────────────────────────────────────────────
+          const src   = fs.readFileSync('docs/HuaweiBook.md', 'utf8');
+          const lines = src.split('\n');
+          const out   = [];
 
           for (const line of lines) {
             if (/^## /.test(line) && !/^## 📑/.test(line)) {
-              out.push('<div class="page-break"></div>', '');
+              out.push('<div style="page-break-before:always"></div>', '');
             }
             out.push(line);
           }
+          const mdBody = out.join('\n');
 
-          // Жодного front matter — YAML-парсер md-to-pdf взагалі не задіяний
-          fs.writeFileSync('docs/_processed.md', out.join('\n'));
-          console.log('Page breaks injected');
-          EOF
+          // ── 2. MD → HTML через marked CLI ─────────────────────────────────
+          const tmpMd = '/tmp/_book.md';
+          fs.writeFileSync(tmpMd, mdBody);
+          const markedBin = execSync('npm root -g').toString().trim() + '/marked/bin/marked.js';
+          const bodyHtml  = execSync(`node "${markedBin}" --input "${tmpMd}"`).toString();
 
-      # ── Конвертуємо MD → PDF через Node API (не CLI) ────────────────────────
-      # Node API приймає звичайний JS-об'єкт — жодного YAML, жодних проблем
-      # з двокрапками у CSS-значеннях колонтитулів.
-      - name: Convert MD → PDF
-        run: |
-          node - <<'EOF'
-          const { mdToPdf } = require('md-to-pdf');
-          const path = require('path');
-          const fs = require('fs');
+          // ── 3. CSS ────────────────────────────────────────────────────────
+          const css = fs.readFileSync('docs/pdf-style.css', 'utf8');
 
-          const font = [
-            'font-family:Open Sans,sans-serif',
-            'font-size:9px',
-            'color:#888',
-            'width:100%',
-            'box-sizing:border-box'
-          ].join(';');
+          // ── 4. Колонтитули (CSS з двокрапками — жоден YAML-парсер не бачить)
+          const font =
+            'font-family:Open Sans,sans-serif;font-size:9px;' +
+            'color:#888;width:100%;box-sizing:border-box';
 
           const headerTemplate =
-            '<div style="' + font + ';padding:4px 15mm 0;border-bottom:1px solid #ddd">' +
-            'Huawei SUN2000 \u2014 \u0415\u043D\u0446\u0438\u043A\u043B\u043E\u043F\u0435\u0434\u0456\u044F ' +
-            '\u041B\u043E\u0433\u0456\u0432 \u0442\u0430 \u0422\u0435\u0445\u043D\u0456\u0447\u043D\u043E\u0457 ' +
-            '\u0414\u0456\u0430\u0433\u043D\u043E\u0441\u0442\u0438\u043A\u0438' +
-            '</div>';
+            `<div style="${font};padding:4px 15mm 0;border-bottom:1px solid #ddd">` +
+            `Huawei SUN2000 \u2014 \u0415\u043D\u0446\u0438\u043A\u043B\u043E\u043F\u0435\u0434\u0456\u044F ` +
+            `\u041B\u043E\u0433\u0456\u0432 \u0442\u0430 \u0422\u0435\u0445\u043D\u0456\u0447\u043D\u043E\u0457 ` +
+            `\u0414\u0456\u0430\u0433\u043D\u043E\u0441\u0442\u0438\u043A\u0438` +
+            `</div>`;
 
           const footerTemplate =
-            '<div style="' + font + ';padding:0 15mm 4px;text-align:right">' +
-            '<span class="pageNumber"></span>&nbsp;/&nbsp;<span class="totalPages"></span>' +
-            '</div>';
+            `<div style="${font};padding:0 15mm 4px;text-align:right">` +
+            `<span class="pageNumber"></span>&nbsp;/&nbsp;<span class="totalPages"></span>` +
+            `</div>`;
+
+          // ── 5. Повний HTML-документ ────────────────────────────────────────
+          const html = `<!DOCTYPE html>
+          <html><head>
+            <meta charset="utf-8">
+            <style>${css}</style>
+          </head><body>
+            ${bodyHtml}
+          </body></html>`;
+
+          const tmpHtml = '/tmp/_book.html';
+          fs.writeFileSync(tmpHtml, html);
+
+          // ── 6. Puppeteer: HTML → PDF ───────────────────────────────────────
+          const puppeteerRoot = execSync('npm root -g').toString().trim();
+          const { launch }    = require(puppeteerRoot + '/puppeteer');
 
           (async () => {
-            const pdf = await mdToPdf(
-              { path: 'docs/_processed.md' },
-              {
-                stylesheet: [path.resolve('docs/pdf-style.css')],
-                pdf_options: {
-                  format: 'A4',
-                  margin: { top: '28mm', bottom: '25mm', left: '15mm', right: '15mm' },
-                  displayHeaderFooter: true,
-                  headerTemplate,
-                  footerTemplate,
-                  args: ['--no-sandbox', '--disable-setuid-sandbox']
-                }
-              }
-            );
-
-            if (pdf) {
-              fs.writeFileSync('docs/_processed.pdf', pdf.content);
-              console.log('PDF written to docs/_processed.pdf');
-            } else {
-              console.error('mdToPdf returned nothing');
-              process.exit(1);
-            }
+            const browser = await launch({
+              executablePath: '/usr/bin/chromium-browser',
+              args: ['--no-sandbox', '--disable-setuid-sandbox']
+            });
+            const page = await browser.newPage();
+            await page.goto('file://' + tmpHtml, { waitUntil: 'networkidle0' });
+            await page.pdf({
+              path: 'docs/_processed.pdf',
+              format: 'A4',
+              margin: { top: '28mm', bottom: '25mm', left: '15mm', right: '15mm' },
+              displayHeaderFooter: true,
+              headerTemplate,
+              footerTemplate,
+              printBackground: true
+            });
+            await browser.close();
+            console.log('PDF written: docs/_processed.pdf');
           })();
-          EOF
+          SCRIPT
 
       # ── Зливаємо обкладинку + контент через Ghostscript ─────────────────────
       - name: Merge cover + content
@@ -130,7 +140,7 @@ jobs:
 
       # ── Прибираємо тимчасові файли ───────────────────────────────────────────
       - name: Cleanup
-        run: rm -f docs/_processed.md docs/_processed.pdf docs/cover_tmp.pdf
+        run: rm -f docs/_processed.pdf docs/cover_tmp.pdf
 
       # ── Комітимо результат ───────────────────────────────────────────────────
       - name: Commit HuaweiBook.pdf
