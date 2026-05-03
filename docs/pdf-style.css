@@ -1,0 +1,90 @@
+/* ── Базові налаштування ─────────────────────────────────────────── */
+body {
+  font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+
+/* ── Розрив сторінки ─────────────────────────────────────────────── */
+.page-break {
+  page-break-after: always;
+  break-after: always;
+}
+
+/* ── Заголовки ───────────────────────────────────────────────────── */
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 28px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  color: #333;
+}
+
+/* ── Зміст — більший відступ між пунктами ────────────────────────── */
+h1:first-of-type + ul,
+h1:first-of-type + ol {
+  line-height: 2;
+  font-size: 14px;
+}
+
+/* ── Код ─────────────────────────────────────────────────────────── */
+code {
+  font-family: 'DejaVu Sans Mono', monospace;
+  background: #f4f4f4;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 14px;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ── Таблиці ─────────────────────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background: #f0f0f0;
+  font-weight: 600;
+}
+
+/* ── Цитати ──────────────────────────────────────────────────────── */
+blockquote {
+  border-left: 4px solid #aaa;
+  margin: 16px 0;
+  padding: 8px 16px;
+  color: #555;
+  background: #fafafa;
+}
