@@ -1,0 +1,24 @@
+name: Build PDF Docs
+on: [push]
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-lang-cyrillic texlive-fonts-recommended fonts-dejavu
+          pip install sphinx myst-parser sphinx-rtd-theme
+      - name: Build PDF with xelatex
+        run: |
+          cd docs
+          sphinx-build -b latex . _build/latex
+          cd _build/latex
+          xelatex -interaction=nonstopmode huabook.tex
+          xelatex -interaction=nonstopmode huabook.tex
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: huawei-book-pdf
+          path: docs/_build/latex/huabook.pdf

@@ -18,4 +18,10 @@ master_doc = 'index'
 
 html_theme = 'sphinx_rtd_theme'
 
+latex_engine = 'xelatex'
+
+latex_documents = [
+    ('index', 'huabook.tex', 'Huawei SUN2000 Book', 'You', 'manual'),
+]
+
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
