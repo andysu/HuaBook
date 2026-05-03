@@ -1,6 +1,3 @@
-openpyxl
-mkdocs
-mkdocs-table-reader-plugin
-mkdocs-glightbox
-mkdocs-with-pdf
+sphinx
 myst-parser
+sphinx-rtd-theme
