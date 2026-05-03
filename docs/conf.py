@@ -18,21 +18,9 @@ master_doc = 'index'
 
 html_theme = 'sphinx_rtd_theme'
 
-latex_engine = 'xelatex'
+# PDF via rinohtype (supports Cyrillic out of the box)
+extensions.append('rinoh.frontend.sphinx')
 
-latex_elements = {
-    'papersize': 'a4paper',
-    'pointsize': '11pt',
-    'preamble': r'''
-\usepackage{fontspec}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-\setmonofont{DejaVu Sans Mono}
-''',
-}
-
-latex_documents = [
-    ('index', 'huabook.tex', 'Huawei SUN2000 Book', 'You', 'manual'),
-]
+rinoh_documents = [('index', 'huabook', 'Huawei SUN2000 Book', 'You', 'manual')]
 
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
