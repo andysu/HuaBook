@@ -2,4 +2,8 @@
 
 ![Cover](cover.png)
 
-```{include} HuaweiBook.md```
+```{toctree}
+:maxdepth: 2
+
+HuaweiBook
+```
