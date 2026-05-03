@@ -12,5 +12,6 @@ python:
 sphinx:
   configuration: docs/conf.py
 
-formats:
-  - pdf
+# PDF temporarily disabled - pdflatex doesn't support Cyrillic
+# formats:
+#   - pdf
