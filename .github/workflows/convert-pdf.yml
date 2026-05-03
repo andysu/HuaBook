@@ -27,11 +27,15 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y fonts-dejavu fonts-liberation fonts-noto poppler-utils
+          sudo apt-get install -y \
+            fonts-open-sans \
+            fonts-dejavu \
+            fonts-noto \
+            ghostscript
           pip install img2pdf --break-system-packages
           npm install -g md-to-pdf
 
-      # ── cover.png → cover_tmp.pdf (без втрати якості) ───────────────────────
+      # ── cover.png → cover_tmp.pdf ────────────────────────────────────────────
       - name: Convert cover.png → PDF
         run: |
           img2pdf docs/cover.png \
@@ -39,24 +43,55 @@ jobs:
             --fit shrink \
             -o docs/cover_tmp.pdf
 
-      # ── Вставляємо розриви сторінок перед розділами ─────────────────────────
-      - name: Inject page breaks before sections
+      # ── Препроцесинг: front matter з колонтитулами + розриви сторінок ────────
+      - name: Inject front matter, headers/footers and page breaks
         run: |
           node - <<'EOF'
           const fs = require('fs');
+
+          // ── Колонтитули ──────────────────────────────────────────────────────
+          const font = "font-family:'Open Sans',sans-serif;font-size:9px;color:#888;width:100%;box-sizing:border-box";
+
+          const header =
+            `<div style="${font};padding:4px 15mm 0;border-bottom:1px solid #ddd">` +
+            `Huawei SUN2000 — Енциклопедія Логів та Технічної Діагностики` +
+            `</div>`;
+
+          const footer =
+            `<div style="${font};padding:0 15mm 4px;text-align:right">` +
+            `<span class="pageNumber"></span>&nbsp;/&nbsp;<span class="totalPages"></span>` +
+            `</div>`;
+
+          // ── YAML front matter (md-to-pdf читає його напряму) ─────────────────
+          const frontMatter = [
+            '---',
+            'pdf_options:',
+            '  format: A4',
+            '  margin:',
+            '    top: 28mm',      // збільшено під header
+            '    bottom: 25mm',   // збільшено під footer
+            '    left: 15mm',
+            '    right: 15mm',
+            '  displayHeaderFooter: true',
+            `  headerTemplate: '${header}'`,
+            `  footerTemplate: '${footer}'`,
+            '---',
+            ''
+          ].join('\n');
+
+          // ── Розриви сторінок перед розділами ─────────────────────────────────
           const lines = fs.readFileSync('docs/HuaweiBook.md', 'utf8').split('\n');
           const out = [];
 
           for (const line of lines) {
-            // Перед кожним ## — розрив, але не перед самим Змістом
             if (/^## /.test(line) && !/^## 📑/.test(line)) {
               out.push('<div class="page-break"></div>', '');
             }
             out.push(line);
           }
 
-          fs.writeFileSync('docs/_processed.md', out.join('\n'));
-          console.log('Done: page breaks injected');
+          fs.writeFileSync('docs/_processed.md', frontMatter + out.join('\n'));
+          console.log('Preprocessing done');
           EOF
 
       # ── Конвертуємо MD → PDF ─────────────────────────────────────────────────
@@ -64,12 +99,15 @@ jobs:
         run: |
           md-to-pdf docs/_processed.md \
             --stylesheet docs/pdf-style.css \
-            --launch-options '{"args":["--no-sandbox","--disable-setuid-sandbox"]}' \
-            --pdf-options '{"format":"A4","margin":{"top":"20mm","bottom":"20mm","left":"15mm","right":"15mm"}}'
+            --launch-options '{"args":["--no-sandbox","--disable-setuid-sandbox"]}'
 
-      # ── Зливаємо обкладинку + контент ───────────────────────────────────────
+      # ── Зливаємо обкладинку + контент через Ghostscript ─────────────────────
       - name: Merge cover + content
-        run: pdfunite docs/cover_tmp.pdf docs/_processed.pdf docs/HuaweiBook.pdf
+        run: |
+          gs -dBATCH -dNOPAUSE -q \
+            -sDEVICE=pdfwrite \
+            -sOutputFile=docs/HuaweiBook.pdf \
+            docs/cover_tmp.pdf docs/_processed.pdf
 
       # ── Прибираємо тимчасові файли ───────────────────────────────────────────
       - name: Cleanup
