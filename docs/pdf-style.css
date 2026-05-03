@@ -1,6 +1,6 @@
 /* ── Базові налаштування ─────────────────────────────────────────── */
 body {
-  font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif;
+  font-family: 'Open Sans', 'DejaVu Sans', Arial, sans-serif;
   font-size: 13px;
   line-height: 1.7;
   color: #1a1a1a;
@@ -14,6 +14,7 @@ body {
 
 /* ── Заголовки ───────────────────────────────────────────────────── */
 h1 {
+  font-family: 'Open Sans', sans-serif;
   font-size: 26px;
   font-weight: 700;
   margin-top: 0;
@@ -23,6 +24,7 @@ h1 {
 }
 
 h2 {
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: 600;
   margin-top: 28px;
@@ -31,22 +33,16 @@ h2 {
 }
 
 h3 {
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: 600;
   margin-top: 20px;
   color: #333;
 }
 
-/* ── Зміст — більший відступ між пунктами ────────────────────────── */
-h1:first-of-type + ul,
-h1:first-of-type + ol {
-  line-height: 2;
-  font-size: 14px;
-}
-
 /* ── Код ─────────────────────────────────────────────────────────── */
 code {
-  font-family: 'DejaVu Sans Mono', monospace;
+  font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
   background: #f4f4f4;
   padding: 2px 5px;
   border-radius: 3px;
@@ -62,11 +58,17 @@ pre {
   line-height: 1.5;
 }
 
+pre code {
+  background: none;
+  padding: 0;
+}
+
 /* ── Таблиці ─────────────────────────────────────────────────────── */
 table {
   border-collapse: collapse;
   width: 100%;
   margin: 16px 0;
+  font-size: 12px;
 }
 
 th, td {
@@ -87,4 +89,10 @@ blockquote {
   padding: 8px 16px;
   color: #555;
   background: #fafafa;
+}
+
+/* ── Посилання ───────────────────────────────────────────────────── */
+a {
+  color: #1a56db;
+  text-decoration: none;
 }
