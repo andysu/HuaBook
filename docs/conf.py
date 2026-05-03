@@ -18,14 +18,9 @@ master_doc = 'index'
 
 html_theme = 'sphinx_rtd_theme'
 
-# --- PDF SETTINGS ---
-latex_documents = [
-    ('index', 'huabook.tex', 'Huawei SUN2000 Book', 'You', 'manual'),
-]
+# --- PDF SETTINGS (rinohtype) ---
+extensions.append('rinohtype')
 
-latex_elements = {
-    'papersize': 'a4paper',
-    'pointsize': '11pt',
-}
+rinoh_documents = [('index', 'huabook', 'Huawei SUN2000 Book', 'You', 'manual')]
 
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
