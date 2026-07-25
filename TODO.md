@@ -45,3 +45,8 @@
       - `https://book-of-huawei.readthedocs.io/zh_CN/latest/` (Китайська)
   - **Завдання 9.4: Автоматичні тригери (CI/CD Webhooks)**:
     - Налаштувати GitHub Webhook / GitHub Actions для автоматичного виклику збірки на Read the Docs при кожному `push` у гілку `main`.
+
+- [ ] **10. Розширення документації про новітні моделі (MB0/MBL0) та LUNA2000**
+  - **Завдання 10.1**: Створити новий файл `docs/batteries.md`.
+  - **Завдання 10.2**: Додати в нього опис регістрів LUNA2000 (SOC, SOH, струми, напруги) та логіку Time-of-Use.
+  - **Завдання 10.3**: Інтегрувати файл `batteries.md` у загальний зміст `docs/index.md` (toctree).
