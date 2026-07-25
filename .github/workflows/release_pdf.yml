@@ -29,7 +29,7 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y ghostscript fonts-open-sans fonts-dejavu fonts-noto fonts-noto-cjk
+          sudo apt-get install -y qpdf fonts-open-sans fonts-dejavu fonts-noto fonts-noto-cjk
           npm install -g puppeteer
           pip install -r docs/requirements.txt img2pdf
 
@@ -63,7 +63,7 @@ jobs:
           ];
 
           (async () => {
-            const browser = await launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+            const browser = await launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--export-tagged-pdf'] });
             
             for (const lang of langs) {
               const page = await browser.newPage();
@@ -90,7 +90,7 @@ jobs:
         run: |
           cd docs
           for lang in uk en zh; do
-            gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=HuaBook_${lang}.pdf cover_tmp.pdf _processed_${lang}.pdf
+            qpdf --empty --pages cover_tmp.pdf _processed_${lang}.pdf -- HuaBook_${lang}.pdf
           done
 
       - name: Create Release
