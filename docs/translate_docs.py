@@ -5,6 +5,12 @@ from google.genai import types
 
 def translate_po_file(po_file_path, target_language):
     po = polib.pofile(po_file_path)
+    
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print(f"Skipping {po_file_path}: GEMINI_API_KEY not set. Add it to GitHub Secrets.")
+        return
+        
     client = genai.Client() # Requires GEMINI_API_KEY environment variable
     
     system_instruction = (

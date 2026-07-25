@@ -1,0 +1,104 @@
+name: Build Multi-Lang PDFs and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_tag:
+        description: 'Version tag (e.g. v1.1.0)'
+        required: true
+        default: 'v1.0.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js and Python
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ghostscript fonts-open-sans fonts-dejavu fonts-noto fonts-noto-cjk
+          npm install -g puppeteer
+          pip install img2pdf sphinx myst-parser sphinx-intl sphinx-rtd-theme
+
+      - name: Convert Cover to PDF
+        run: |
+          img2pdf docs/cover.png --pagesize A4 --fit shrink -o docs/cover_tmp.pdf
+
+      - name: Build Sphinx singlehtml
+        run: |
+          cd docs
+          sphinx-build -b singlehtml . _build/singlehtml_uk -D language=uk
+          sphinx-build -b singlehtml . _build/singlehtml_en -D language=en
+          sphinx-build -b singlehtml . _build/singlehtml_zh -D language=zh_CN
+
+      - name: Generate PDFs via Puppeteer
+        run: |
+          cd docs
+          python3 -m http.server 8080 &
+          sleep 3
+          
+          # Знаходимо шлях до глобальних модулів
+          export NODE_PATH=$(npm root -g)
+          
+          node - <<'SCRIPT'
+          const { launch } = require('puppeteer');
+
+          const langs = [
+            { code: 'uk', path: '_build/singlehtml_uk/index.html' },
+            { code: 'en', path: '_build/singlehtml_en/index.html' },
+            { code: 'zh', path: '_build/singlehtml_zh/index.html' }
+          ];
+
+          (async () => {
+            const browser = await launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+            
+            for (const lang of langs) {
+              const page = await browser.newPage();
+              await page.goto(`http://localhost:8080/${lang.path}`, { waitUntil: 'networkidle0' });
+              
+              await page.addStyleTag({ content: 'body { font-family: "Noto Sans", "Noto Sans CJK SC", sans-serif; font-size: 14px; } img { max-width: 100%; height: auto; } pre { white-space: pre-wrap; }' });
+              
+              await page.pdf({
+                path: `_processed_${lang.code}.pdf`,
+                format: 'A4',
+                margin: { top: '25mm', bottom: '25mm', left: '15mm', right: '15mm' },
+                displayHeaderFooter: true,
+                headerTemplate: '<div style="font-size:9px;color:#888;padding-left:15mm;">Huawei SUN2000</div>',
+                footerTemplate: '<div style="font-size:9px;color:#888;padding-right:15mm;width:100%;text-align:right;"><span class="pageNumber"></span></div>',
+                printBackground: true
+              });
+              console.log(`PDF built for ${lang.code}`);
+            }
+            await browser.close();
+          })();
+          SCRIPT
+
+      - name: Merge Covers and Create Final PDFs
+        run: |
+          cd docs
+          for lang in uk en zh; do
+            gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=HuaBook_${lang}.pdf cover_tmp.pdf _processed_${lang}.pdf
+          done
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.version_tag }}
+          name: Release ${{ github.event.inputs.version_tag }}
+          files: |
+            docs/HuaBook_uk.pdf
+            docs/HuaBook_en.pdf
+            docs/HuaBook_zh.pdf
