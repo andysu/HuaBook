@@ -27,7 +27,7 @@ jobs:
       - name: Update POT and PO files
         run: |
           cd docs
-          make gettext
+          sphinx-build -b gettext . _build/gettext
           sphinx-intl update -p _build/gettext -l en -l zh_CN
 
       - name: Run LLM Translator
