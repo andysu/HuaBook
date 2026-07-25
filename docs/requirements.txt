@@ -2,3 +2,6 @@ sphinx
 myst-parser
 sphinx-rtd-theme
 rinohtype
+sphinx-intl
+polib
+google-genai

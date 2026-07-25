@@ -1,0 +1,3429 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the HuaBook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: HuaBook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 23:01+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../HuaweiBook.md:1
+msgid "📖 Huawei SUN2000: Структура логів та технічна діагностика"
+msgstr ""
+
+#: ../../HuaweiBook.md:3
+msgid ""
+"**Важливо:** Ця книга є теоретичною базою для розуміння принципів обробки"
+" даних у проекті **[Huawei Log Parser](https://andysu3.mooo.com/hua3/)**."
+" Проект створено для автоматизованого перетворення бінарних логів "
+"інвертора у human-readable формат для подальшого аналізу."
+msgstr ""
+
+#: ../../HuaweiBook.md:5
+msgid "📑 Зміст"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Розділ"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[Вступ](#вступ)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Для кого ця книга"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[**Глава 1**](#глава-1-еволюція-huawei-sun2000-порівняння-v2-та-v3)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Еволюція Huawei SUN2000: Порівняння V2 та V3"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[**Глава 2**](#глава-2-організація-памяті-та-файлова-система-інвертора)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Організація пам'яті та файлова система інвертора"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[**Глава 3**](#глава-3-структура-логів-deep-dive)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Структура логів (Deep Dive)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[**Глава 4**](#глава-4-modbus-та-функція-0x41)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Modbus та функція 0x41"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[**Глава 5**](#глава-5-карта-регістрів-та-параметрів)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Карта регістрів та параметрів"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[**Глава 6**](#глава-6-практичне-застосування-om-стратегії)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Практичне застосування: O&M стратегії"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[**Глава 7**](#глава-7-перспективи-автоматизованої-діагностики)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Перспективи автоматизованої діагностики"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"[**Глава "
+"8**](#глава-8-huawei-в-сонячній-енергетиці-від-телекому-до-світового-лідерства)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Huawei в сонячній енергетиці"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"[**Глава 9**](#глава-9-mppt-та-iv-curve-"
+"diagnostics-фізика-алгоритми-діагностика-панелей)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "MPPT та IV Curve Diagnostics"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"[**Глава "
+"10**](#глава-10-що-далі-автоматизований-аналіз-та-регламент-робіт)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Що далі: Автоматизований аналіз та регламент робіт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "[Додатки](#додатки)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Словник термінів · Коди помилок · Підключення до Modbus"
+msgstr ""
+
+#: ../../HuaweiBook.md:24
+msgid ""
+"📋 **Версія 1.2** · Оновлено згідно з: *Huawei SUN2000MB Modbus Interface "
+"Definitions Issue 07 (2026-06-23)* (V200R023C10SPC215). Додано підтримку "
+"лінійок MB0/MBL0."
+msgstr ""
+
+#: ../../HuaweiBook.md:28
+msgid "Вступ"
+msgstr ""
+
+#: ../../HuaweiBook.md:30
+msgid ""
+"Ця книга описує внутрішню логіку роботи та структуру даних інверторів "
+"Huawei SUN2000. Її головна мета — пояснити, **що саме робить проект "
+"[Huawei Log Parser](https://andysu3.mooo.com/hua3/) і для чого він "
+"створений**."
+msgstr ""
+
+#: ../../HuaweiBook.md:32
+msgid "Документ орієнтовано на:"
+msgstr ""
+
+#: ../../HuaweiBook.md:33
+msgid ""
+"**Інженерів O&M (Operation & Maintenance)**: Для розуміння принципів "
+"перетворення бінарних файлів на корисну діагностичну інформацію."
+msgstr ""
+
+#: ../../HuaweiBook.md:34
+msgid ""
+"**Розробників**: Як довідник офсетів, регістрів та недокументованих "
+"структур."
+msgstr ""
+
+#: ../../HuaweiBook.md:36
+msgid "Архітектурний хаос: чому логи Huawei виглядають саме так? (Передмова)"
+msgstr ""
+
+#: ../../HuaweiBook.md:38
+msgid ""
+"Аналізуючи закриті формати Huawei, слід пам'ятати: **єдиної продуманої з "
+"нуля системи логування не існує**. Перед нами класичний \"археологічний "
+"пиріг\" (яскравий приклад закону Конвея), створений внаслідок еволюції "
+"компанії Huawei протягом 15+ років. Тут нашаровувалися рішення різних "
+"команд, різного заліза та різних технологічних епох."
+msgstr ""
+
+#: ../../HuaweiBook.md:40
+msgid ""
+"Якщо розкласти цей \"зоопарк\" на складові, чітко виділяються 4 абсолютно"
+" різні суб-архітектури:"
+msgstr ""
+
+#: ../../HuaweiBook.md:42
+msgid "1. Низькорівнева команда DSP / Силової електроніки"
+msgstr ""
+
+#: ../../HuaweiBook.md:43
+msgid "**Файли:** `dsp_log.a`, `dsp_log.b`, `dsp_wave_data.emap`, `dsp_freq_data`"
+msgstr ""
+
+#: ../../HuaweiBook.md:44
+msgid ""
+"**Формат:** Сирі `struct` з мови C, здамплені з оперативної пам'яті "
+"DSP-процесора."
+msgstr ""
+
+#: ../../HuaweiBook.md:45
+msgid ""
+"**Особливості:** Ці файли створювалися інженерами для мікроконтролерів із"
+" ліченими кілобайтами RAM. Жодної метаінформації немає — лише жорсткі "
+"зміщення байтів (byte offsets)."
+msgstr ""
+
+#: ../../HuaweiBook.md:47
+msgid "2. Команда системної платформи EMAP (Event Management Platform)"
+msgstr ""
+
+#: ../../HuaweiBook.md:48
+msgid ""
+"**Файли:** `alarmg_history.emap`, `perfmg_data.emap`, `his_inv_rd.emap`, "
+"`usrmg_usrlog_2.emap`"
+msgstr ""
+
+#: ../../HuaweiBook.md:49
+msgid ""
+"**Формат:** Фіксовані бінарні таблиці з магічними заголовками (V100, "
+"V200, V300, V600)."
+msgstr ""
+
+#: ../../HuaweiBook.md:50
+msgid ""
+"**Особливості:** Спроба Huawei (2012-2015) створити \"внутрішній "
+"стандарт\" для журналів. З'явилася версіонність, але всередині кожного "
+"файлу все ще лежить свій унікальний масив фіксованих записів."
+msgstr ""
+
+#: ../../HuaweiBook.md:52
+msgid "3. Команди периферійних модулів (PLC, Opti, BMU Battery)"
+msgstr ""
+
+#: ../../HuaweiBook.md:53
+msgid ""
+"**Файли:** `cco_log_file.emap`, `plc_featdata.emap`, `opt_featdata.emap`,"
+" `bmu_alarm_log`"
+msgstr ""
+
+#: ../../HuaweiBook.md:54
+msgid ""
+"**Особливості:** Повний різнобій. Найцікавіший приклад — "
+"`cco_log_file.emap`: це звичайний текстовий файл логів (`printf`), якому "
+"просто дали розширення `.emap`, щоб головна система сприймала його як "
+"\"свій\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:56
+msgid "4. Сучасна команда FusionSolar & Android/iOS Apps (Cloud Team)"
+msgstr ""
+
+#: ../../HuaweiBook.md:57
+msgid "**Файли:** `sun_inpt_rec.emap`, `sun_inspect_rec`, `cfg_file_ctrl.emap`"
+msgstr ""
+
+#: ../../HuaweiBook.md:58
+msgid ""
+"**Формат:** Гнучкі таблиці ключ-значення (Key-Value) або TLV (Tag-Length-"
+"Value)."
+msgstr ""
+
+#: ../../HuaweiBook.md:59
+msgid ""
+"**Особливості:** Ці формати зберігають `Offset`, `Name` та `Value`, тому "
+"додавання нового параметра в прошивці більше не ламає парсери."
+msgstr ""
+
+#: ../../HuaweiBook.md:61
+msgid ""
+"**Підсумок:** Розширення `.emap` та архіви `.tar.gz` — це лише обгортка "
+"(контейнер), куди Huawei \"скидає\" артефакти роботи десятка різних "
+"команд розробників. У цій книзі ми навчимося витягувати з цього "
+"\"пирога\" справжню цінність."
+msgstr ""
+
+#: ../../HuaweiBook.md:63
+msgid "Глава 1. Еволюція Huawei SUN2000: Порівняння V2 та V3"
+msgstr ""
+
+#: ../../HuaweiBook.md:65
+msgid ""
+"Серія SUN2000 пройшла значний шлях від перших промислових моделей до "
+"інтелектуальних гібридних систем. Розуміння поколінь V2 та V3 — це ключ "
+"до правильної інтерпретації логів та ефективної діагностики."
+msgstr ""
+
+#: ../../HuaweiBook.md:67
+msgid "1.1 Архітектура \"Brain + Heart\" (ARM + DSP)"
+msgstr ""
+
+#: ../../HuaweiBook.md:69
+msgid ""
+"Кожен інвертор Huawei SUN2000 — це дворівнева обчислювальна система з "
+"чітким розподілом обов'язків між низькорівневим та високорівневим залізом"
+" (підтверджено аналізом прошивок та системної архітектури на 95%+):"
+msgstr ""
+
+#: ../../HuaweiBook.md:71
+msgid "**ARM-процесор (\"Мозок\" / System Controller)**:"
+msgstr ""
+
+#: ../../HuaweiBook.md:72
+msgid ""
+"**Апаратна платформа та ОС**: Процесори архітектури ARM (під управлінням "
+"**Huawei LiteOS** або Embedded Linux у SmartLogger)."
+msgstr ""
+
+#: ../../HuaweiBook.md:73
+msgid ""
+"**Роль**: Високорівнева логіка управління, збереження файлової системи "
+"EMAP, керування мережевими стеками (Modbus RTU / Modbus TCP) та взаємодія"
+" з хмарою FusionSolar або мобільним додатком."
+msgstr ""
+
+#: ../../HuaweiBook.md:74
+msgid ""
+"**Дані та логи**: На ARM-процесорі формуються системні журнали `run_log`,"
+" таблиці тривог `alarmg_history.emap`, дані продуктивності "
+"`perfmg_data.emap` та щоденник `his_inv_rd.emap`. Також ARM керує сесіями"
+" передачі файлів через Modbus функцію **0x41**."
+msgstr ""
+
+#: ../../HuaweiBook.md:75
+msgid "**DSP-процесор (\"Серце\" / Power & Protection Controller)**:"
+msgstr ""
+
+#: ../../HuaweiBook.md:76
+msgid ""
+"**Апаратна платформа**: Сигнальні мікроконтролери (серій Texas "
+"Instruments C2000 або HiSilicon) з операційною системою реального часу "
+"(RTOS)."
+msgstr ""
+
+#: ../../HuaweiBook.md:77
+msgid ""
+"**Роль**: Мікросекундне апаратне керування силовою електронікою "
+"(ШІМ-модуляція силових транзисторів IGBT/SiC), відстеження точок MPPT та "
+"миттєвий захист від короткого замикання, перенапруги й дуги (AFCI)."
+msgstr ""
+
+#: ../../HuaweiBook.md:78
+msgid ""
+"**Дані та логи**: Оскільки DSP має обмежений об'єм RAM (лічені "
+"кілобайти), він працює з кільцевими буферами (Ring Buffer) та зберігає "
+"\"сирі\" C-структури безпосередньо з пам'яті: дампи "
+"`dsp_log.a`/`dsp_log.b`, осцилограми аварій `dsp_wave_data.emap` (знімки "
+"фазних струмів і напруг при збої) та спектральний аналіз `dsp_freq_data`."
+msgstr ""
+
+#: ../../HuaweiBook.md:80
+msgid "1.2 Еволюція поколінь: Таблиця моделей"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Покоління"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Характерні моделі"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Особливості"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**V2 (Classic)**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "33KTL-A, 36KTL, 42KTL"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Промисловий стандарт. Висока надійність, фіксована логіка."
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**V3 (Smart)**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "30/36/40KTL-M3, SUN2000-MB0, SUN5000-MB0, MBL0"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"Нова архітектура, гнучкість, інтелектуальні функції (AFCI), нативна "
+"підтримка ESS, розширена карта регістрів."
+msgstr ""
+
+#: ../../HuaweiBook.md:87
+msgid "1.3 Зв'язок: Від RS485 до Modbus TCP"
+msgstr ""
+
+#: ../../HuaweiBook.md:89
+msgid ""
+"Це одна з найважливіших відмінностей, яка напряму впливає на швидкість "
+"витягування логів:"
+msgstr ""
+
+#: ../../HuaweiBook.md:91
+msgid "**V2 (Повільна ера)**:"
+msgstr ""
+
+#: ../../HuaweiBook.md:92
+msgid "**Фізика**: Тільки RS485 (Modbus RTU)."
+msgstr ""
+
+#: ../../HuaweiBook.md:93
+msgid ""
+"**Швидкість**: 9600 або 19200 бод. Вичитування великого лога `his_inv_rd`"
+" міг тривати десятки хвилин."
+msgstr ""
+
+#: ../../HuaweiBook.md:94
+msgid "**Топологія**: Обов'язкове використання SmartLogger для великих об'єктів."
+msgstr ""
+
+#: ../../HuaweiBook.md:95
+msgid "**V3 (Швидка ера)**:"
+msgstr ""
+
+#: ../../HuaweiBook.md:96
+msgid "**Фізика**: Modbus TCP (через Ethernet або WLAN-FE Dongle)."
+msgstr ""
+
+#: ../../HuaweiBook.md:97
+msgid ""
+"**Можливості**: Пряме підключення до хмари FusionSolar через **Smart "
+"Dongle** (SDongle), що значно спрощує систему для власника — SmartLogger "
+"більше не є обов'язковим для середніх СЕС."
+msgstr ""
+
+#: ../../HuaweiBook.md:98
+msgid ""
+"**Безпека**: У V3 порт за замовчуванням часто змінено з 502 на **6607**, "
+"що вимагає уваги при налаштуванні стороннього моніторингу."
+msgstr ""
+
+#: ../../HuaweiBook.md:100
+msgid "1.4 Енергонезалежність та УЗЕ (ESS)"
+msgstr ""
+
+#: ../../HuaweiBook.md:102
+msgid ""
+"У версії V3 (особливо в серіях **M3** та **MB0**) Huawei зробила "
+"величезний крок у бік систем накопичення енергії (ESS):"
+msgstr ""
+
+#: ../../HuaweiBook.md:104
+msgid ""
+"**Нативна підтримка батарей**: Моделі серії MB0 мають вбудовані порти для"
+" підключення систем **LUNA2000**."
+msgstr ""
+
+#: ../../HuaweiBook.md:105
+msgid ""
+"**Карта регістрів**: У V3 додано сотні нових регістрів для моніторингу "
+"стану акумуляторів (SOC, SOH, температура елементів, цикли заряду)."
+msgstr ""
+
+#: ../../HuaweiBook.md:106
+msgid ""
+"**Управління УЗЕ**: Нові алгоритми \"Time-of-Use\" та \"Self-"
+"consumption\" повністю інтегровані в логіку ARM-процесора V3."
+msgstr ""
+
+#: ../../HuaweiBook.md:108
+msgid "Глава 2. Організація пам'яті та файлова система інвертора"
+msgstr ""
+
+#: ../../HuaweiBook.md:110
+msgid ""
+"Інвертор Huawei SUN2000 функціонує як потужний реєстратор даних (Data "
+"Logger). Його внутрішня архітектура забезпечує запис інформації про стан "
+"системи для подальшого аналізу."
+msgstr ""
+
+#: ../../HuaweiBook.md:112
+msgid "2.1 Що таке EMAP?"
+msgstr ""
+
+#: ../../HuaweiBook.md:114
+msgid ""
+"Більшість логів Huawei мають розширення `.emap`. Це не просто випадковий "
+"набір літер:"
+msgstr ""
+
+#: ../../HuaweiBook.md:116
+msgid ""
+"**EMAP** — пропрієтарне розширення файлів Huawei, що використовується для"
+" командних скриптів та бінарних даних в екосистемі SUN2000. Офіційне "
+"розшифрування абревіатури публічно не задокументоване."
+msgstr ""
+
+#: ../../HuaweiBook.md:117
+msgid ""
+"**Чому не текстовий лог?** Текстові файли (напр. `.txt` або `.log`) "
+"займають у 5–10 разів більше місця і вимагають значних ресурсів процесора"
+" для обробки. EMAP дозволяє записувати дані \"сирими\" структурами "
+"безпосередньо з пам'яті ARM-процесора, що гарантує миттєву швидкість "
+"запису навіть при критичних аваріях."
+msgstr ""
+
+#: ../../HuaweiBook.md:119
+msgid "2.2 Механізм циклічного буфера (Circular Buffer)"
+msgstr ""
+
+#: ../../HuaweiBook.md:121
+msgid ""
+"Внутрішня Flash-пам'ять інвертора має обмежений об'єм (зазвичай від 128 "
+"МБ до 1 ГБ залежно від моделі). Щоб пам'ять не переповнилася в самий "
+"невідповідний момент, Huawei використовує принцип **FIFO** (First In, "
+"First Out) у вигляді кільцевого буфера:"
+msgstr ""
+
+#: ../../HuaweiBook.md:123
+msgid "**Сегментація**: Пам'ять розділена на логічні блоки (сектори)."
+msgstr ""
+
+#: ../../HuaweiBook.md:124
+msgid "**Запис**: Нові дані пишуться послідовно."
+msgstr ""
+
+#: ../../HuaweiBook.md:125
+msgid ""
+"**Перезапис**: Коли вільне місце закінчується, система автоматично "
+"знаходить найстаріший блок даних, стирає його і записує на його місце "
+"найсвіжішу інформацію."
+msgstr ""
+
+#: ../../HuaweiBook.md:127
+msgid ""
+"**Важливо**: Саме тому при розслідуванні аварії критично важливо "
+"вивантажити логи **протягом 30-90 днів**. Якщо затягнути — дані про "
+"аварію будуть безповоротно стерті новими записами."
+msgstr ""
+
+#: ../../HuaweiBook.md:129
+msgid "2.3 Життєвий цикл лога: від сенсора до файлу"
+msgstr ""
+
+#: ../../HuaweiBook.md:131
+msgid "Процес реєстрації даних проходить три етапи:"
+msgstr ""
+
+#: ../../HuaweiBook.md:133
+msgid ""
+"**Збір (Sampling)**: DSP-процесор опитує датчики струму та напруги тисячі"
+" разів на секунду."
+msgstr ""
+
+#: ../../HuaweiBook.md:134
+msgid ""
+"**Агрегація (Aggregation)**: ARM-процесор збирає ці дані, усереднює їх "
+"(для `his_inv_rd` це зазвичай 5 хвилин) або виділяє піки (для "
+"`alarmg_history`)."
+msgstr ""
+
+#: ../../HuaweiBook.md:135
+msgid ""
+"**Комміт (Commit)**: Дані накопичуються в оперативній пам'яті (RAM) і "
+"скидаються на Flash-носій великими порціями, щоб зменшити знос "
+"Flash-пам'яті (Wear Leveling)."
+msgstr ""
+
+#: ../../HuaweiBook.md:137
+msgid "2.4 Персистентність та надійність"
+msgstr ""
+
+#: ../../HuaweiBook.md:139
+msgid "Логи Huawei SUN2000 є **енергонезалежними**. Це означає:"
+msgstr ""
+
+#: ../../HuaweiBook.md:141
+msgid ""
+"**Збереження при Power Loss**: Якщо на станції повністю зникне живлення "
+"(і по сонцю, і по мережі), вже записані на Flash логи залишаться "
+"неушкодженими."
+msgstr ""
+
+#: ../../HuaweiBook.md:142
+msgid ""
+"**Атомарність запису**: Система використовує механізм журналювання "
+"файлової системи. Це гарантує, що файл `.emap` не буде \"битим\", навіть "
+"якщо живлення зникло прямо в момент запису."
+msgstr ""
+
+#: ../../HuaweiBook.md:143
+msgid ""
+"**Зносостійкість**: Алгоритми Huawei розподіляють записи по всьому об'єму"
+" чіпа пам'яті, що дозволяє інвертору надійно зберігати логи протягом "
+"всього терміну експлуатації (20+ років)."
+msgstr ""
+
+#: ../../HuaweiBook.md:145
+msgid "Глава 3. Структура логів (Deep Dive)"
+msgstr ""
+
+#: ../../HuaweiBook.md:147
+msgid ""
+"Цей розділ є технічним довідником, де кожен файл лога розглядається як "
+"інструмент діагностики. Файли розділені на функціональні групи для "
+"полегшення розуміння того, які дані обробляє проект Huawei Log Parser."
+msgstr ""
+
+#: ../../HuaweiBook.md:151
+msgid "3.1 Повсякденний моніторинг та продуктивність"
+msgstr ""
+
+#: ../../HuaweiBook.md:153
+msgid "📈 his\\_inv\\_rd (History Inverter Read)"
+msgstr ""
+
+#: ../../HuaweiBook.md:155
+msgid "**Призначення**: Головний щоденник роботи станції."
+msgstr ""
+
+#: ../../HuaweiBook.md:156
+msgid ""
+"**Що всередині**: Напруга та струм по кожному MPPT, температура "
+"радіаторів, опір ізоляції (Rin). Крок запису — 5 хвилин."
+msgstr ""
+
+#: ../../HuaweiBook.md:157
+msgid ""
+"**O&M порада**: Це ваш основний інструмент для пошуку \"лінивих\" "
+"стрінгів. Якщо напруга на одному стрінгу стабільно нижча за інші — "
+"шукайте затінення або поганий контакт у конекторах MC4."
+msgstr ""
+
+#: ../../HuaweiBook.md:159
+msgid "💰 perfmg\\_data (Performance Data)"
+msgstr ""
+
+#: ../../HuaweiBook.md:161
+msgid "**Призначення**: Бухгалтерія генерації."
+msgstr ""
+
+#: ../../HuaweiBook.md:162
+msgid ""
+"**Що всередині**: Накопичена енергія в кВт·год по годинах, днях та "
+"місяцях."
+msgstr ""
+
+#: ../../HuaweiBook.md:163
+msgid ""
+"**O&M порада**: Використовуйте для порівняння прогнозованої генерації "
+"(PVsyst) з фактичною. Різниця понад 10% — привід для миття панелей."
+msgstr ""
+
+#: ../../HuaweiBook.md:167
+msgid "3.2 Реєстрація аварійних подій та осцилограми"
+msgstr ""
+
+#: ../../HuaweiBook.md:169
+msgid "🚨 alarmg\\_history (Alarm History)"
+msgstr ""
+
+#: ../../HuaweiBook.md:171
+msgid "**Призначення**: Список усіх \"хвороб\" та зупинок."
+msgstr ""
+
+#: ../../HuaweiBook.md:172
+msgid ""
+"**Що всередині**: Точний час початку та завершення кожної тривоги, код "
+"помилки."
+msgstr ""
+
+#: ../../HuaweiBook.md:173
+msgid ""
+"**O&M порада**: Допомагає виявити хронічні проблеми мережі (напр. \"Grid "
+"Overvoltage\"). Це залізний доказ для претензій до Обленерго."
+msgstr ""
+
+#: ../../HuaweiBook.md:175
+msgid "📉 dsp\\_wave\\_data (Oscillography)"
+msgstr ""
+
+#: ../../HuaweiBook.md:177
+msgid "**Призначення**: Мікроскоп для аварій."
+msgstr ""
+
+#: ../../HuaweiBook.md:178
+msgid ""
+"**Що всередині**: Форма хвилі (синусоїда) напруги та струму за "
+"мілісекунди до спрацювання захисту."
+msgstr ""
+
+#: ../../HuaweiBook.md:179
+msgid ""
+"**O&M порада**: Дозволяє відрізнити внутрішню поломку інвертора від "
+"зовнішнього імпульсного перенапруження (напр. удар блискавки поруч)."
+msgstr ""
+
+#: ../../HuaweiBook.md:181
+msgid "📊 dsp\\_freq\\_data (Frequency Analysis)"
+msgstr ""
+
+#: ../../HuaweiBook.md:183
+msgid "**Призначення**: Аналізатор якості мережі."
+msgstr ""
+
+#: ../../HuaweiBook.md:184
+msgid "**Що всередині**: Спектральні дані частотних коливань."
+msgstr ""
+
+#: ../../HuaweiBook.md:185
+msgid ""
+"**O&M порада**: Виявляє гармоніки, які спричиняють перегрів обмоток "
+"трансформаторів та швидкий знос силових компонентів."
+msgstr ""
+
+#: ../../HuaweiBook.md:189
+msgid "3.3 Група \"Здоров'я заліза\": Превентивна діагностика"
+msgstr ""
+
+#: ../../HuaweiBook.md:191
+msgid "📈 sun\\_inpt\\_rec (Sun Input Record / IV-Curves)"
+msgstr ""
+
+#: ../../HuaweiBook.md:193
+msgid "**Призначення**: Медична карта сонячних панелей."
+msgstr ""
+
+#: ../../HuaweiBook.md:194
+msgid ""
+"**Що всередині**: Унікальні вольт-амперні характеристики кожного стрінга "
+"та лічильники мотогодин вентиляторів."
+msgstr ""
+
+#: ../../HuaweiBook.md:195
+msgid ""
+"**O&M порада**: \"Ламана\" IV-крива вказує на мікротріщини в панелях або "
+"критичне забруднення. Плануйте заміну вентиляторів після 30,000 годин "
+"роботи, не чекаючи їх зупинки."
+msgstr ""
+
+#: ../../HuaweiBook.md:197
+msgid "🔋 capacitor\\_data (Capacitor Health)"
+msgstr ""
+
+#: ../../HuaweiBook.md:199
+msgid "**Призначення**: Прогноз \"вибуху\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:200
+msgid ""
+"**Що всередині**: Результати внутрішнього тесту ємності та ESR "
+"електролітичних конденсаторів DC-шини."
+msgstr ""
+
+#: ../../HuaweiBook.md:201
+msgid ""
+"**O&M порада**: Конденсатори висихають через 5–8 років експлуатації. Цей "
+"лог дозволяє замінити плату за пів року до того, як вона вийде з ладу з "
+"димом."
+msgstr ""
+
+#: ../../HuaweiBook.md:203
+msgid "💎 opt\\_featdata (Optimizer Data)"
+msgstr ""
+
+#: ../../HuaweiBook.md:205
+msgid "**Призначення**: Рентген під кожною панеллю."
+msgstr ""
+
+#: ../../HuaweiBook.md:206
+msgid "**Що всередині**: Серійні номери та статистика кожного оптимізатора."
+msgstr ""
+
+#: ../../HuaweiBook.md:207
+msgid ""
+"**O&M порада**: Дозволяє знайти ОДНУ несправну панель серед ТИСЯЧІ на "
+"великому полі."
+msgstr ""
+
+#: ../../HuaweiBook.md:211
+msgid "3.4 Група \"Зв'язок та Аудит\": Безпека та PLC"
+msgstr ""
+
+#: ../../HuaweiBook.md:213
+msgid "🔐 usrmg\\_usrlog\\_2 (User Management Log)"
+msgstr ""
+
+#: ../../HuaweiBook.md:215
+msgid "**Призначення**: Журнал входу в систему."
+msgstr ""
+
+#: ../../HuaweiBook.md:216
+msgid ""
+"**Що всередині**: Хто, коли і через який інтерфейс (Bluetooth/App) "
+"заходив у налаштування."
+msgstr ""
+
+#: ../../HuaweiBook.md:217
+msgid ""
+"**O&M порада**: Вирішує суперечки: \"Це інвертор сам вимкнувся чи "
+"сервісний інженер дав команду Shutdown?\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:219
+msgid "📡 plc\\_featdata & cco\\_log (Power Line Communication)"
+msgstr ""
+
+#: ../../HuaweiBook.md:221
+msgid "**Призначення**: Моніторинг зв'язку по силових кабелях."
+msgstr ""
+
+#: ../../HuaweiBook.md:222
+msgid "**Що всередині**: Рівень шумів та помилок у лінії AC."
+msgstr ""
+
+#: ../../HuaweiBook.md:223
+msgid ""
+"**O&M порада**: Якщо інвертори часто \"відпадають\" від моніторингу — ці "
+"логи покажуть, чи не створює перешкоди сусіднє промислове обладнання."
+msgstr ""
+
+#: ../../HuaweiBook.md:225
+msgid "📟 run\\_log (ARM System Log)"
+msgstr ""
+
+#: ../../HuaweiBook.md:227
+msgid "**Призначення**: Журнал операційної системи."
+msgstr ""
+
+#: ../../HuaweiBook.md:228
+msgid ""
+"**Що всередині**: Події завантаження модулів, помилки пам'яті, лог роботи"
+" Bluetooth."
+msgstr ""
+
+#: ../../HuaweiBook.md:229
+msgid ""
+"**O&M порада**: Використовується для аналізу причин зависання SmartLogger"
+" або проблем з оновленням прошивки."
+msgstr ""
+
+#: ../../HuaweiBook.md:233
+msgid "3.5 Група \"Налаштування\": Контроль конфігурації"
+msgstr ""
+
+#: ../../HuaweiBook.md:235
+msgid "⚙️ cfg\\_file\\_ctrl (Control Configuration)"
+msgstr ""
+
+#: ../../HuaweiBook.md:237
+msgid "**Призначення**: Еталон налаштувань."
+msgstr ""
+
+#: ../../HuaweiBook.md:238
+msgid ""
+"**Що всередині**: Поточні межі напруги, частоти та активовані функції "
+"захисту."
+msgstr ""
+
+#: ../../HuaweiBook.md:239
+msgid ""
+"**O&M порада**: Перевіряйте цей файл після кожного візиту сторонніх "
+"спеціалістів, щоб переконатися, що вони не занизили пороги захисту для "
+"\"штучного\" збільшення виробітку."
+msgstr ""
+
+#: ../../HuaweiBook.md:241
+msgid "Глава 4. Modbus та функція 0x41"
+msgstr ""
+
+#: ../../HuaweiBook.md:243
+msgid ""
+"**Примітка:** Інформація щодо функції 0x41 зібрана частково завдяки "
+"реверс-інжинірингу та аналізу мережевого трафіку. Для практичної "
+"перевірки цих механізмів ви можете використовувати [Huawei Log "
+"Parser](https://andysu3.mooo.com/hua3/), який реалізує ці запити на "
+"практиці."
+msgstr ""
+
+#: ../../HuaweiBook.md:245
+msgid ""
+"Стандартний протокол Modbus був створений для читання коротких значень з "
+"регістрів (наприклад, поточної потужності). Він не розрахований на "
+"передачу файлів розміром у мегабайти. Щоб обійти це обмеження, Huawei "
+"впровадила власну функцію **0x41**, яка дозволяє інвертору передавати "
+"бінарні файли частинами."
+msgstr ""
+
+#: ../../HuaweiBook.md:247
+msgid "4.1 Чому функція 0x41?"
+msgstr ""
+
+#: ../../HuaweiBook.md:249
+msgid ""
+"Стандартні функції Modbus (03 — читання регістрів, 04 — читання вхідних "
+"регістрів) мають ліміт у **252 байти** на один пакет. Витягнути через них"
+" лог `his_inv_rd` обсягом 500 КБ було б неможливо або вкрай неефективно. "
+"Функція 0x41 дозволяє:"
+msgstr ""
+
+#: ../../HuaweiBook.md:251
+msgid "**Ініціювати сесію** передачі конкретного файлу."
+msgstr ""
+
+#: ../../HuaweiBook.md:252
+msgid "**Запитувати дані** великими порціями (чанками)."
+msgstr ""
+
+#: ../../HuaweiBook.md:253
+msgid "**Контролювати помилки** на рівні кожного пакета."
+msgstr ""
+
+#: ../../HuaweiBook.md:255
+msgid "4.2 Карта файлової системи: Файл AD.bin"
+msgstr ""
+
+#: ../../HuaweiBook.md:257
+msgid ""
+"Перш ніж прочитати будь-який лог, пристрій (наприклад, SmartLogger або "
+"ваш скрипт) має дізнатися, які файли взагалі є в пам'яті інвертора. Для "
+"цього використовується \"мета-файл\" **`AD.bin`** (Alarm/Access Data)."
+msgstr ""
+
+#: ../../HuaweiBook.md:259
+msgid "Це каталог файлової системи."
+msgstr ""
+
+#: ../../HuaweiBook.md:260
+msgid "У ньому записані імена всіх доступних логів, їхні ID та поточні розміри."
+msgstr ""
+
+#: ../../HuaweiBook.md:261
+msgid ""
+"**LD.bin**, **PD.bin**, **CD.bin** — це основні групи даних (Logs, "
+"Performance, Configuration), які витягуються за цією ж логікою."
+msgstr ""
+
+#: ../../HuaweiBook.md:263
+msgid "4.3 Механізм передачі (Sub-functions)"
+msgstr ""
+
+#: ../../HuaweiBook.md:265
+msgid ""
+"Передача файлу через функцію 0x41 відбувається за суворим протоколом "
+"під-функцій:"
+msgstr ""
+
+#: ../../HuaweiBook.md:267
+msgid ""
+"📎 **Примітка:** Конкретні значення під-функцій (0x05, 0x06, 0x07) "
+"наведено на основі аналізу мережевого трафіку. Для верифікації зверніться"
+" до повної версії *Modbus Interface Definitions* вашої моделі (секція "
+"6.3.7), яка доступна на порталі support.huawei.com після авторизації."
+msgstr ""
+
+#: ../../HuaweiBook.md:269
+msgid "**Sub-function 0x05 (Start Upload)**:"
+msgstr ""
+
+#: ../../HuaweiBook.md:270
+msgid "Майстер каже: \"Я хочу прочитати файл типу 0x04 (Логи)\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:271
+msgid ""
+"Слейв (інвертор) відповідає: \"Окей, загальний розмір файлу 512 000 байт."
+" Я буду віддавати його порціями по **240 байт**\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:272
+msgid "**Sub-function 0x06 (Uploading Data)**:"
+msgstr ""
+
+#: ../../HuaweiBook.md:273
+msgid "Майстер запитує: \"Дай мені пакет №1\", потім \"Дай пакет №2\" і так далі."
+msgstr ""
+
+#: ../../HuaweiBook.md:274
+msgid ""
+"**Чому 240 байт?** Це \"золота середина\". Разом із заголовками Modbus "
+"пакет ідеально вписується у 256 байт, що гарантує стабільну роботу навіть"
+" на старих RS485 лініях (V2)."
+msgstr ""
+
+#: ../../HuaweiBook.md:275
+msgid "**Sub-function 0x07 (End Upload)**:"
+msgstr ""
+
+#: ../../HuaweiBook.md:276
+msgid "Після останнього пакета Майстер каже: \"Все отримав, сесію закрито\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:278
+msgid "4.4 Контроль цілісності та таймінги"
+msgstr ""
+
+#: ../../HuaweiBook.md:280
+msgid ""
+"Оскільки логи передаються бінарно, будь-яка помилка в одному байті "
+"зробить весь EMAP-файл нечитабельним."
+msgstr ""
+
+#: ../../HuaweiBook.md:282
+msgid "**CRC-перевірка**: Кожен пакет Modbus має свою контрольну суму."
+msgstr ""
+
+#: ../../HuaweiBook.md:283
+msgid ""
+"**Frame SN**: Кожен чанк має порядковий номер. Якщо пакет загубився, "
+"Майстер запитує його повторно за номером."
+msgstr ""
+
+#: ../../HuaweiBook.md:284
+msgid ""
+"**Тайм-аути**: При читанні великих файлів (особливо на V2 через RS485) "
+"важливо встановлювати збільшені тайм-аути (Response Timeout) до 5–10 "
+"секунд, оскільки ARM-процесору інвертора потрібен час, щоб \"підняти\" "
+"дані з Flash-пам'яті в буфер відправки."
+msgstr ""
+
+#: ../../HuaweiBook.md:286
+msgid "Глава 5. Карта регістрів та параметрів"
+msgstr ""
+
+#: ../../HuaweiBook.md:288
+msgid ""
+"Якщо логи (EMAP) — це \"щоденник\" інвертора, то Modbus-регістри — це "
+"його \"анкета\", яку можна опитувати в режимі реального часу. Для систем "
+"моніторингу (Home Assistant, Node-RED, SCADA) це основне джерело даних."
+msgstr ""
+
+#: ../../HuaweiBook.md:290
+msgid "5.1 Логіка мапінгу та типи даних"
+msgstr ""
+
+#: ../../HuaweiBook.md:292
+msgid ""
+"⚠️ **Увага щодо версійності:** Карта регістрів Huawei SUN2000 суттєво "
+"відрізняється між серіями (L0, L1, M0, M1, M2, M3, MA, MB0). Наведені "
+"нижче адреси відповідають переважно серії **SUN2000MA** та "
+"**SUN2000-M1/M3** згідно з документом *Modbus Interface Definitions "
+"V100R001C00SPC166 Issue 08 (2024-11-07)*. Завжди звіряйтеся з документом "
+"для **вашої конкретної моделі та версії прошивки** перед написанням коду."
+msgstr ""
+
+#: ../../HuaweiBook.md:294
+msgid ""
+"Huawei використовує стандартний протокол Modbus RTU/TCP з наступними "
+"правилами:"
+msgstr ""
+
+#: ../../HuaweiBook.md:296
+msgid "**Big-Endian**: Старший байт передається першим."
+msgstr ""
+
+#: ../../HuaweiBook.md:297
+msgid "**UINT16 / INT16**: Займають 1 реєстр (2 байти)."
+msgstr ""
+
+#: ../../HuaweiBook.md:298
+msgid ""
+"**UINT32 / INT32**: Займають 2 послідовні реєстри (4 байти). Важливо "
+"читати їх одним запитом."
+msgstr ""
+
+#: ../../HuaweiBook.md:299
+msgid ""
+"**Gain (Масштабування)**: Більшість значень передаються як цілі числа. "
+"Щоб отримати реальне значення, їх потрібно поділити на коефіцієнт "
+"(найчастіше 10, 100 або 1000)."
+msgstr ""
+
+#: ../../HuaweiBook.md:303
+msgid "5.2 Основні групи регістрів (Стандарт V2/V3)"
+msgstr ""
+
+#: ../../HuaweiBook.md:305
+msgid "📋 Системна інформація (Read-Only)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Регістр"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Опис"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Тип"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Gain"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "30000"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Модель інвертора (String)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "STR"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "-"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "30015"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Серійний номер (SN)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32089"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Стан роботи (Run state)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "U16"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "1"
+msgstr ""
+
+#: ../../HuaweiBook.md:313
+msgid "☀️ DC Сторона (Сонячні панелі)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32016"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга PV1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "I16"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "10"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32017"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм PV1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "100"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32064"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Вхідна потужність DC"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "I32"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "1000"
+msgstr ""
+
+#: ../../HuaweiBook.md:321
+msgid "⚡ AC Сторона (Мережа)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32066"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Лінійна напруга L1-L2 (AB)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32069"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Фазна напруга A (L1-N)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32070"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Фазна напруга B (L2-N)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32071"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Фазна напруга C (L3-N)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32072"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм фази A"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32074"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм фази B"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32076"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм фази C"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32078"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Пікова активна потужність за добу"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32080"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Активна потужність"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32082"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Реактивна потужність"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32085"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Частота мережі"
+msgstr ""
+
+#: ../../HuaweiBook.md:337
+msgid "💰 Енергія та Температура"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32106"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Добова генерація"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "U32"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32109"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Загальна генерація (Total)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "32087"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Внутрішня температура"
+msgstr ""
+
+#: ../../HuaweiBook.md:349
+msgid "5.3 Спеціальні регістри V3: Системи накопичення (ESS) та нові функції"
+msgstr ""
+
+#: ../../HuaweiBook.md:351
+msgid ""
+"У поколінні V3 (включно із новітніми моделями MB0 та MBL0) з'явився "
+"величезний блок регістрів для роботи з акумуляторами **LUNA2000**. Вони "
+"зазвичай знаходяться в діапазоні **37000+** та **47000+**."
+msgstr ""
+
+#: ../../HuaweiBook.md:353
+msgid ""
+"💡 **Примітка щодо Huawei Log Parser:** Проект `huawei-log-parser` активно"
+" розвивається. Наразі він підтримує парсинг базових показників ESS "
+"(струми, напруги), проте найновіші функції управління (як-от складні "
+"розклади зарядки або режими бекапу) знаходяться в процесі імплементації. "
+"Слідкуйте за оновленнями парсера для повної підтримки всіх функцій "
+"V200R023C10SPC215."
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Опис значень"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**37000**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Стан роботи ESS unit 1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "E16"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "0=offline, 1=standby, 2=running, 3=fault, 4=sleep"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**37001**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Потужність заряду/розряду"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ">0: заряд, <0: розряд"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**37003**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга шини акумулятора"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Вольти"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**37004**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SOC (Рівень заряду, ESS unit 1)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напр. 955 = 95.5%"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**37066**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Накопичений заряд (Total charge)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "кВт·год"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**37068**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Накопичений розряд (Total discharge)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**47086**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Режим заряду/розряду (Battery charging mode)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "0=adaptive, 1=fixed, 3=time-of-use (TOU), 4=fully fed to grid, 5=TOU"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**47102**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SOC для резервного живлення (Backup power SOC)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Відсоток резерву (0-100%)"
+msgstr ""
+
+#: ../../HuaweiBook.md:370
+msgid "5.4 Таблиця масштабування (Швидка довідка)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Параметр"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Типовий Gain"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Приклад у реєстрі"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Реальне значення"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга (V)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "2315"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**231.5 V**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм (A)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "10, 100 або 1000"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "450"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**4.5 A** (якщо Gain 100)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Потужність (W)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "15400"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**15400 W**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Енергія (kWh)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "1245"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**12.45 kWh**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Частота (Hz)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "5002"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**50.02 Hz**"
+msgstr ""
+
+#: ../../HuaweiBook.md:380
+msgid ""
+"*Примітка: Завжди звіряйтеся з конкретною версією \"Modbus Interface "
+"Definitions\" для вашої моделі інвертора, оскільки Huawei може змінювати "
+"мапінг у нових прошивках.*"
+msgstr ""
+
+#: ../../HuaweiBook.md:384
+msgid "5.5 Топ-10 регістрів для базового моніторингу"
+msgstr ""
+
+#: ../../HuaweiBook.md:386
+msgid "Найчастіше використовувані регістри в Home Assistant / Node-RED / SCADA:"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Примітка"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Загальна потужність від панелей (Вт)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга фази A (L1-N)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга фази B (L2-N)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга фази C (L3-N)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Активна потужність AC"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ">0 = генерація, <0 = споживання"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "°C"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Стан інвертора"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "512 = On-Grid"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Загальна генерація"
+msgstr ""
+
+#: ../../HuaweiBook.md:403
+msgid "5.6 Декодування стану інвертора (Регістр 32089)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Значення"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Стан"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "0"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Idle: Initializing"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Idle: Detecting ISO"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "2"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Idle: Detecting irradiation"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "3"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Idle: Grid Detecting"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "256"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Starting"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**512**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**On-Grid (нормальна робота)**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "513"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "On-Grid: Power Limit"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "514"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "On-Grid: Self-derating"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "768"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Shutdown: Fault"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "769"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Shutdown: Command"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "770"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Shutdown: OVGR"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "771"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Shutdown: Comm. disconnected"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "772"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Shutdown: Power Limit"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "1280"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Spot-check"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "2048"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "IV Scanning"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "40960"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Idle: No irradiation"
+msgstr ""
+
+#: ../../HuaweiBook.md:424
+msgid "Глава 6. Практичне застосування: O&M стратегії"
+msgstr ""
+
+#: ../../HuaweiBook.md:426
+msgid ""
+"Технічні логи мають цінність лише тоді, коли вони перетворюються на дії, "
+"що рятують обладнання або збільшують прибуток. У цій главі ми розглянемо "
+"конкретні сценарії для відділів експлуатації (O&M)."
+msgstr ""
+
+#: ../../HuaweiBook.md:428
+msgid "6.1 Профілактика: Заміна ДО поломки"
+msgstr ""
+
+#: ../../HuaweiBook.md:430
+msgid "Більшість аварій на СЕС можна передбачити за кілька місяців."
+msgstr ""
+
+#: ../../HuaweiBook.md:432
+msgid ""
+"**Вентилятори (Fan Life)**: У файлі `sun_inpt_rec` є лічильник мотогодин."
+" Якщо значення наближається до **30,000 годин** — плануйте заміну. "
+"Зупинка вентилятора в липні призведе до перегріву та деградації силових "
+"ключів IGBT, вартість ремонту яких у 20 разів вища за новий вентилятор."
+msgstr ""
+
+#: ../../HuaweiBook.md:433
+msgid ""
+"**Конденсатори**: Аналізуйте `capacitor_data`. Зміна статусу з `Healthy` "
+"на будь-яке інше значення — це сигнал, що електроліт висихає. Це критично"
+" для інверторів, що працюють понад 5 років у гарячому кліматі."
+msgstr ""
+
+#: ../../HuaweiBook.md:435
+msgid "6.2 Боротьба за ефективність: Пошук \"втрачених\" кВт·год"
+msgstr ""
+
+#: ../../HuaweiBook.md:437
+msgid ""
+"Якщо станція генерує на 5–10% менше, ніж прогнозує сонячний калькулятор, "
+"логи покажуть причину:"
+msgstr ""
+
+#: ../../HuaweiBook.md:439
+msgid ""
+"**Аналіз IV-кривих (`sun_inpt_rec`)**: \"Сходинки\" на кривій свідчать "
+"про затінення (димар, дерево, сусідня панель). Якщо крива плавна, але "
+"низька — панелі потребують миття."
+msgstr ""
+
+#: ../../HuaweiBook.md:440
+msgid ""
+"**Деградація контактів**: Дивіться `his_inv_rd`. Якщо напруга на стрінгу "
+"PV1 \"гуляє\" на 10-20 вольт більше, ніж на сусідніх при однаковому сонці"
+" — у вас підгоряє контакт у конекторі MC4 або розподільчій коробці "
+"панелі. Це прямий ризик пожежі."
+msgstr ""
+
+#: ../../HuaweiBook.md:442
+msgid "6.3 Юридичний захист та вирішення суперечок"
+msgstr ""
+
+#: ../../HuaweiBook.md:444
+msgid ""
+"Логи інвертора — це \"бортовий самописець\", дані якого неможливо "
+"підробити."
+msgstr ""
+
+#: ../../HuaweiBook.md:446
+msgid ""
+"**Претензії до Обленерго**: Якщо мережа часто виходить за межі (253V+), "
+"інвертор вимикається. Файл `alarmg_history` чітко зафіксує сотні таких "
+"подій. З цим звітом ви можете вимагати від енергомережі заміни "
+"трансформатора або лінії."
+msgstr ""
+
+#: ../../HuaweiBook.md:447
+msgid ""
+"**Обмеження потужності**: Якщо диспетчер примусово знижує вашу генерацію "
+"через SmartLogger, файл `grid_adj_log` покаже точний час та рівень "
+"обмеження. Це дозволяє розрахувати суму недоотриманого прибутку для "
+"компенсації."
+msgstr ""
+
+#: ../../HuaweiBook.md:449
+msgid ""
+"ℹ️ **Важливо:** Файл `grid_adj_log` доступний лише на об'єктах зі "
+"SmartLogger. На об'єктах з прямим підключенням через SDongle цей лог може"
+" бути відсутнім або недоступним через Modbus FC 0x41. Альтернатива — "
+"аналіз регістра **32080** (Active Power) в архіві `his_inv_rd`."
+msgstr ""
+
+#: ../../HuaweiBook.md:450
+msgid ""
+"**Гарантійні випадки**: Якщо інвертор згорів, файл `dsp_wave_data` "
+"покаже, чи був це заводський брак, чи зовнішній удар блискавки."
+msgstr ""
+
+#: ../../HuaweiBook.md:454
+msgid "📋 Чек-лист O&M візиту (Алгоритм ТО)"
+msgstr ""
+
+#: ../../HuaweiBook.md:456
+msgid ""
+"Під час кожного планового візиту на об'єкт (раз на пів року/рік) інженер "
+"має:"
+msgstr ""
+
+#: ../../HuaweiBook.md:458
+msgid "**Вивантажити повний пакет логів** (функція Export Log у FusionSolar)."
+msgstr ""
+
+#: ../../HuaweiBook.md:459
+msgid ""
+"**Перевірити `Rin` (Опір ізоляції)** у `his_inv_rd`. Значення нижче 100 "
+"кОм — шукайте пошкодження ізоляції кабелів."
+msgstr ""
+
+#: ../../HuaweiBook.md:460
+msgid "**Зняти IV-криві** для всіх стрінгів."
+msgstr ""
+
+#: ../../HuaweiBook.md:461
+msgid ""
+"**Перевірити журнал подій** на наявність частих помилок \"Grid "
+"Overvoltage\" або \"String Reverse\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:462
+msgid "**Оцінити стан вентиляторів та конденсаторів**."
+msgstr ""
+
+#: ../../HuaweiBook.md:464
+msgid "Глава 7. Перспективи автоматизованої діагностики"
+msgstr ""
+
+#: ../../HuaweiBook.md:466
+msgid ""
+"Обсяги даних у логах інвертора створюють можливості для використання "
+"автоматизованих методів аналізу та машинного навчання (ML)."
+msgstr ""
+
+#: ../../HuaweiBook.md:468
+msgid "7.1 AI на борту: Захист від дуги (AFCI)"
+msgstr ""
+
+#: ../../HuaweiBook.md:470
+msgid ""
+"Найяскравіший приклад використання AI в інверторах Huawei — це функція "
+"**AFCI** (Arc Fault Circuit Interrupter)."
+msgstr ""
+
+#: ../../HuaweiBook.md:472
+msgid ""
+"**Як це працює**: DSP-процесор аналізує спектральний шум у DC-ланцюзі "
+"(подібно до того, як ми бачили в `dsp_freq_data`)."
+msgstr ""
+
+#: ../../HuaweiBook.md:473
+msgid ""
+"**Роль AI**: Нейромережа, навчена на мільйонах зразків \"нормального\" "
+"шуму та шуму \"електричної дуги\", здатна за мілісекунди ідентифікувати "
+"початок загоряння і вимкнути інвертор. Це захист, який неможливо "
+"реалізувати звичайними математичними алгоритмами."
+msgstr ""
+
+#: ../../HuaweiBook.md:475
+msgid "7.2 Прогностична аналітика (Predictive Maintenance)"
+msgstr ""
+
+#: ../../HuaweiBook.md:477
+msgid ""
+"EMAP-логи — це ідеальне паливо для систем Big Data. Маючи базу даних "
+"логів за 10 років від тисяч інверторів, можна:"
+msgstr ""
+
+#: ../../HuaweiBook.md:479
+msgid ""
+"**Виявляти аномалії**: Система бачить \"відхилення в поведінці\" напруги "
+"стрінга за тиждень до того, як конектор почне диміти."
+msgstr ""
+
+#: ../../HuaweiBook.md:480
+msgid ""
+"**Прогнозувати ресурс (RUL)**: На основі температури та навантаження AI "
+"розраховує залишковий ресурс вентиляторів та конденсаторів, формуючи "
+"графік закупівель запчастин заздалегідь."
+msgstr ""
+
+#: ../../HuaweiBook.md:482
+msgid "7.3 Хмарний інтелект FusionSolar"
+msgstr ""
+
+#: ../../HuaweiBook.md:484
+msgid "Перевага сучасного покоління V3 — повна інтеграція з хмарою. Це дозволяє:"
+msgstr ""
+
+#: ../../HuaweiBook.md:486
+msgid ""
+"**Масовий аналіз**: Одночасна перевірка IV-кривих на тисячах станцій без "
+"виїзду інженера."
+msgstr ""
+
+#: ../../HuaweiBook.md:487
+msgid ""
+"**Бенчмаркінг**: Порівняння вашої станції з аналогічними в тому ж "
+"регіоні. Якщо всі генерують 100%, а ви 90% — хмара сама підкаже, що пора "
+"мити панелі."
+msgstr ""
+
+#: ../../HuaweiBook.md:489
+msgid "Висновок: Перехід до CBM"
+msgstr ""
+
+#: ../../HuaweiBook.md:491
+msgid ""
+"Майбутнє O&M — це перехід від моделі \"ремонтуємо, коли зламалося\" або "
+"\"перевіряємо раз на рік\" до моделі **CBM (Condition-Based "
+"Maintenance)** — обслуговування за реальним станом. Завдяки глибокому "
+"аналізу логів, який ми розглянули в цій книзі, ви отримуєте можливість "
+"чути \"голос\" вашого інвертора і діяти максимально ефективно."
+msgstr ""
+
+#: ../../HuaweiBook.md:494
+msgid "Глава 8. Huawei в сонячній енергетиці: від телекому до світового лідерства"
+msgstr ""
+
+#: ../../HuaweiBook.md:496
+msgid ""
+"*«Ми не просто виробляємо обладнання — ми будуємо цифрову енергетичну "
+"інфраструктуру майбутнього.»* — Huawei Digital Power, Corporate Vision"
+msgstr ""
+
+#: ../../HuaweiBook.md:499
+msgid "8.1 З чого все починалося: телекомунікаційне ДНК"
+msgstr ""
+
+#: ../../HuaweiBook.md:501
+msgid ""
+"Huawei Technologies Co., Ltd. заснована у **1987 році** в Шеньчжені Жень "
+"Чженфеєм. Перші роки компанія займалася дистрибуцією телефонних "
+"комутаторів PBX, а вже у 1992 році запустила власне виробництво "
+"телекомунікаційного обладнання. До 2000-х Huawei стала глобальним "
+"постачальником мереж 2G/3G/4G і зіткнулася зі специфічною проблемою "
+"власного бізнесу: базестанції мобільного зв'язку в Африці, Азії та на "
+"Близькому Сході часто не мали надійного підключення до електромережі."
+msgstr ""
+
+#: ../../HuaweiBook.md:503
+msgid ""
+"Саме ця проблема стала точкою входу у фотовольтаїку. Huawei почала "
+"розробляти гібридні енергетичні системи з сонячними панелями — **для "
+"живлення власних базостанцій**. Перші інвертори Huawei не продавалися на "
+"ринку: вони були внутрішнім інженерним рішенням."
+msgstr ""
+
+#: ../../HuaweiBook.md:505
+msgid ""
+"Це телекомунікаційне походження визначило три фундаментальні відмінності "
+"підходу Huawei від традиційних виробників інверторів:"
+msgstr ""
+
+#: ../../HuaweiBook.md:507
+#, python-format
+msgid ""
+"**Культура надійності \"п'яти дев'яток\"** (99.999% uptime) — базестанції"
+" не можуть просто \"перезавантажитися\"."
+msgstr ""
+
+#: ../../HuaweiBook.md:508
+msgid ""
+"**Цифровий інтелект з першого дня** — кожен пристрій має мікропроцесор, "
+"комунікаційний стек і дистанційне керування. Для традиційних виробників "
+"інверторів це була опція; для Huawei — базова вимога."
+msgstr ""
+
+#: ../../HuaweiBook.md:509
+msgid ""
+"**Глобальна масштабованість платформ** — архітектура розрахована на "
+"мільйони одиниць по всьому світу з єдиним програмним управлінням."
+msgstr ""
+
+#: ../../HuaweiBook.md:513
+msgid "8.2 Хронологія: від першого кроку до №1 у світі"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Рік"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Подія"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2000–2005**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"Розробка гібридних систем живлення для базостанцій Huawei у регіонах без "
+"стабільної мережі"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2006**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Заснування внутрішнього R&D підрозділу з відновлюваної енергетики"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2011**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Вихід на ринок комерційних PV-інверторів: перші моделі серії SUN2000 (V1)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2013**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Запуск хмарної платформи FusionSolar; перші установки в Китаї та Європі"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2015**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Реліз серії SUN2000 V2 (33KTL-A, 36KTL, 42KTL) — промисловий стандарт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2017**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"Huawei входить до топ-3 виробників інверторів у світі; запуск "
+"смарт-стрінг-концепції"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2019**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Реліз серії SUN2000 V3 (M3, MB0) з підтримкою ESS та AFCI"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2020**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"Huawei стає **№1 у світі** за поставками PV-інверторів (за даними Wood "
+"Mackenzie)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2021**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Виокремлення Huawei Digital Power як окремого бізнес-підрозділу"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2022**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"Запуск серій з підтримкою 1500V та нових рішень для великих комерційних і"
+" промислових об'єктів"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "**2023–2025**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid ""
+"Активна експансія в Україні та Центральній Європі; зростання частки ринку"
+" на тлі децентралізації енергетики"
+msgstr ""
+
+#: ../../HuaweiBook.md:531
+msgid "8.3 Ключові переваги над конкурентами"
+msgstr ""
+
+#: ../../HuaweiBook.md:533
+msgid "8.3.1 Смарт-стрінг архітектура (Smart String)"
+msgstr ""
+
+#: ../../HuaweiBook.md:535
+msgid ""
+"Традиційні центральні інвертори підключають усі рядки до одного "
+"MPPT-трекера. Huawei запровадила концепцію **смарт-стрінгу**: кожен рядок"
+" підключається до власного незалежного MPPT-каналу з індивідуальним "
+"моніторингом струму. Це дає:"
+msgstr ""
+
+#: ../../HuaweiBook.md:537
+msgid "Виявлення несправного рядка в режимі реального часу без виїзду на об'єкт."
+msgstr ""
+
+#: ../../HuaweiBook.md:538
+msgid ""
+"Мінімізацію втрат від часткового затінення — замість того щоб \"тягнути\""
+" всі рядки вниз до найслабшого."
+msgstr ""
+
+#: ../../HuaweiBook.md:539
+msgid "Точну IV-діагностику по кожному рядку окремо."
+msgstr ""
+
+#: ../../HuaweiBook.md:541
+msgid "8.3.2 Вбудований захист від дуги (AFCI)"
+msgstr ""
+
+#: ../../HuaweiBook.md:543
+msgid ""
+"Huawei однією з перших впровадила стандартний вбудований **AFCI** — "
+"нейромережевий захист від електричної дуги в DC-ланцюзі. AFCI аналізує "
+"спектральні характеристики сигналу за мілісекунди і вимикає ланцюг ще до "
+"займання."
+msgstr ""
+
+#: ../../HuaweiBook.md:545
+msgid "8.3.3 Нативна хмарна екосистема"
+msgstr ""
+
+#: ../../HuaweiBook.md:547
+msgid ""
+"**FusionSolar** включена безкоштовно для кожної станції. Платформа "
+"об'єднує реальний моніторинг (секундний інтервал), дистанційне керування "
+"та оновлення прошивок OTA, AI-аналітику деградації та IV Curve Scanning "
+"для тисяч станцій одночасно."
+msgstr ""
+
+#: ../../HuaweiBook.md:549
+msgid "8.3.4 Порівняльна таблиця з ключовими конкурентами"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Функція"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Huawei SUN2000"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SMA Sunny Tripower"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Fronius Symo"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Solis"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Смарт-стрінг моніторинг"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "✅ Вбудований"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "⚠️ Опція"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "❌ Немає"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "AFCI захист"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "✅ Стандартно"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "⚠️ Деякі серії"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Хмарний моніторинг"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "✅ Безкоштовно"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "⚠️ Платно"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "IV Curve Scanning"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "❌ Зовнішній прилад"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Нативна підтримка ESS"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "✅ LUNA2000"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "✅ SMA Home Storage"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "✅ Fronius Solar.Battery"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "⚠️ Обмежена"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Відкрита карта регістрів"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "✅ Публічна"
+msgstr ""
+
+#: ../../HuaweiBook.md:562
+msgid "8.4 Huawei на ринку України"
+msgstr ""
+
+#: ../../HuaweiBook.md:564
+msgid "8.4.1 Контекст та умови"
+msgstr ""
+
+#: ../../HuaweiBook.md:566
+msgid ""
+"Україна стала одним із найактивніших ринків для Huawei Digital Power у "
+"Центральній Європі:"
+msgstr ""
+
+#: ../../HuaweiBook.md:568
+msgid ""
+"**Бум розподіленої генерації** після 2022 року: дефіцит централізованого "
+"електропостачання різко збільшив попит на автономні та гібридні СЕС."
+msgstr ""
+
+#: ../../HuaweiBook.md:569
+msgid ""
+"**\"Зелений тариф\" та корпоративне PPA** — програми, що стимулювали "
+"комерційні та промислові установки."
+msgstr ""
+
+#: ../../HuaweiBook.md:570
+msgid ""
+"**Компетентна дистрибуторська мережа**: авторизовані партнери Huawei "
+"Digital Power в Україні мають власні сервісні центри та технічну "
+"підтримку."
+msgstr ""
+
+#: ../../HuaweiBook.md:572
+msgid "8.4.2 Що представлено на ринку України (2024–2025)"
+msgstr ""
+
+#: ../../HuaweiBook.md:574
+msgid "**Побутові та мікрокомерційні інвертори (1–30 кВт):**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Модель"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Потужність"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Ключові особливості"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-2/3/4/5/6KTL-L1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "2–6 кВт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "String, однофазний"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Базова серія для дому, 1 MPPT"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-3/4/5/6/8/10KTL-M1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "3–10 кВт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "String, трифазний"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "2 MPPT, AFCI, Smart Dongle"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-10/15/20/25KTL-M3"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "10–25 кВт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "4 MPPT, підтримка LUNA2000"
+msgstr ""
+
+#: ../../HuaweiBook.md:582
+msgid "**Комерційні та промислові інвертори (30–255 кВт):**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "MPPT"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-30/36/40KTL-M3"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "30–40 кВт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "6"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Стандарт для комерційних дахів"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-50KTL-M3"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "50 кВт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Широко поширений на агропромислових об'єктах"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-100KTL-M2"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "100 кВт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "12"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Великі комерційні та промислові СЕС"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-185/215/255KTL-H0"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "185–255 кВт"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Проекти utility-scale"
+msgstr ""
+
+#: ../../HuaweiBook.md:591
+msgid "**Системи накопичення LUNA2000:**"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Ємність"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Сумісний інвертор"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "LUNA2000-5/10/15-S0"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "5/10/15 кВт·год"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-2..10KTL-L1/M1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "LUNA2000-30/60/100-H1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "30/60/100 кВт·год"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SUN2000-M3 та вище"
+msgstr ""
+
+#: ../../HuaweiBook.md:598
+msgid "**Пристрої збору даних та керування:**"
+msgstr ""
+
+#: ../../HuaweiBook.md:600
+msgid ""
+"**Smart Dongle (SDongle A05)** — Wi-Fi/4G модуль для підключення до "
+"FusionSolar без SmartLogger. Стандартна опція для побутових та малих "
+"комерційних станцій."
+msgstr ""
+
+#: ../../HuaweiBook.md:601
+msgid ""
+"**SmartLogger 3000A** — промисловий логер для великих об'єктів (до 80 "
+"інверторів)."
+msgstr ""
+
+#: ../../HuaweiBook.md:602
+msgid "**SmartLogger 1000A** — рішення для малих і середніх комерційних об'єктів."
+msgstr ""
+
+#: ../../HuaweiBook.md:604
+msgid ""
+"⚠️ **Важливо:** Самостійне підключення до FusionSolar без авторизованого "
+"партнера може обмежити доступ до частини функцій (дистанційне оновлення "
+"прошивок, повний IV Curve Scanning). Рекомендується введення в "
+"експлуатацію через авторизованого інсталятора."
+msgstr ""
+
+#: ../../HuaweiBook.md:610
+msgid ""
+"Глава 9. MPPT та IV Curve Diagnostics: фізика, алгоритми, діагностика "
+"панелей"
+msgstr ""
+
+#: ../../HuaweiBook.md:612
+msgid "9.1 Що таке MPPT і навіщо він потрібен"
+msgstr ""
+
+#: ../../HuaweiBook.md:614
+msgid ""
+"**Maximum Power Point Tracking (MPPT)** — це алгоритм керування, "
+"реалізований в інверторі, який безперервно знаходить і підтримує точку "
+"максимальної потужності фотовольтаїчного (PV) ланцюга. Сонячні панелі є "
+"нелінійними джерелами струму: залежно від освітленості, температури та "
+"стану самих модулів, крива їх потужності суттєво змінюється."
+msgstr ""
+
+#: ../../HuaweiBook.md:616
+msgid ""
+"Без MPPT інвертор працював би з фіксованою напругою шини постійного "
+"струму і \"знімав\" з панелей лише частину доступної потужності. MPPT "
+"дозволяє реалізувати **95–99% теоретичного максимуму**, що є критично "
+"важливим для економічної ефективності станції."
+msgstr ""
+
+#: ../../HuaweiBook.md:620
+msgid "9.2 IV-характеристика та точка максимальної потужності"
+msgstr ""
+
+#: ../../HuaweiBook.md:622
+msgid ""
+"Будь-яку сонячну панель або рядок панелей можна описати за допомогою "
+"**IV-кривої** (Current-Voltage Curve). Ключові точки:"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Позначення"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Значення / Опис"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм короткого замикання"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Isc"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Максимальний струм при U = 0 В"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга холостого ходу"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Voc"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Максимальна напруга при I = 0 А"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм у точці максимуму"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Impp"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Струм в точці Maximum Power Point"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга у точці максимуму"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Vmpp"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Напруга в точці Maximum Power Point"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Максимальна потужність"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Pmpp"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Pmpp = Impp × Vmpp (вершина кривої P-V)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Коефіцієнт заповнення"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "FF"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "FF = Pmpp / (Isc × Voc), ідеал ≈ 0.75–0.85"
+msgstr ""
+
+#: ../../HuaweiBook.md:633
+msgid ""
+"Крива потужності P = I × U має чіткий максимум — точку MPP. Завдання MPPT"
+" — утримувати робочу точку інвертора саме тут, незважаючи на постійні "
+"коливання зовнішніх умов."
+msgstr ""
+
+#: ../../HuaweiBook.md:637
+msgid "9.3 Алгоритми MPPT у Sun2000"
+msgstr ""
+
+#: ../../HuaweiBook.md:639
+msgid ""
+"Huawei Sun2000 реалізує удосконалений MPPT-алгоритм на базі класичного "
+"методу збурень і спостережень (P&O), доповнений елементами провідного "
+"інкременту (INC) та адаптивним кроком:"
+msgstr ""
+
+#: ../../HuaweiBook.md:641
+msgid "Інвертор вимірює поточні U та I на шині DC."
+msgstr ""
+
+#: ../../HuaweiBook.md:642
+msgid "Обчислює поточну потужність: **P = U × I**."
+msgstr ""
+
+#: ../../HuaweiBook.md:643
+msgid ""
+"Вносить мале збурення напруги (±ΔU) та порівнює нове значення P з "
+"попереднім."
+msgstr ""
+
+#: ../../HuaweiBook.md:644
+msgid ""
+"Якщо P зросла — рух у правильному напрямку; якщо впала — змінює напрямок "
+"збурення."
+msgstr ""
+
+#: ../../HuaweiBook.md:645
+msgid ""
+"Розмір кроку адаптується: великий — при швидкій зміні умов (хмара), малий"
+" — поблизу MPP."
+msgstr ""
+
+#: ../../HuaweiBook.md:646
+msgid "Цикл повторюється з частотою 1–100 Гц залежно від інсоляції та режиму."
+msgstr ""
+
+#: ../../HuaweiBook.md:648
+msgid ""
+"⚠️ Huawei в серії Sun2000 використовує алгоритм **Smart IV Scanning**, "
+"який поєднує пасивний MPPT у реальному часі з активним скануванням усієї "
+"IV-кривої для більш точного визначення глобального MPP — особливо "
+"актуально при часткових затіненнях."
+msgstr ""
+
+#: ../../HuaweiBook.md:652
+msgid "9.4 Багатоточковий MPPT і архітектура Sun2000"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Серія Sun2000"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Кількість MPPT"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Макс. струм на вхід"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Діапазон MPPT"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Sun2000-3…10KTL-M1"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "13.5 А"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "90–560 В"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Sun2000-15…25KTL-M3"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "4"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "26 А (2+2)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "200–1000 В"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Sun2000-50KTL-M3"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "26 А"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Sun2000-100KTL-M2"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "22 А"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "200–1500 В"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Sun2000-255KTL-H0"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "500–1500 В"
+msgstr ""
+
+#: ../../HuaweiBook.md:662
+msgid "При частковому затіненні Sun2000 використовує:"
+msgstr ""
+
+#: ../../HuaweiBook.md:664
+msgid ""
+"**Rapid MPPT Scan** — повне сканування IV-кривої кожні 15–30 хвилин або "
+"при раптовому падінні потужності >5%."
+msgstr ""
+
+#: ../../HuaweiBook.md:665
+msgid ""
+"**ShadowFix** — алгоритм розпізнавання часткового затінення та "
+"автоматичного пошуку глобального MPP."
+msgstr ""
+
+#: ../../HuaweiBook.md:666
+msgid ""
+"**Smart String Detection** — аналіз відхилень між рядками для раннього "
+"виявлення затінення."
+msgstr ""
+
+#: ../../HuaweiBook.md:670
+msgid "9.5 IV Curve Scanning як основа діагностики панелей"
+msgstr ""
+
+#: ../../HuaweiBook.md:672
+msgid ""
+"Принцип, на якому базується MPPT — вимірювання пар (U, I) вздовж усієї "
+"робочої характеристики — є одночасно й основою **IV Curve Diagnosis**. "
+"Якщо MPPT використовує IV-криву для пошуку максимуму потужності, то IV "
+"Curve Diagnosis аналізує **форму** цієї кривої для виявлення дефектів."
+msgstr ""
+
+#: ../../HuaweiBook.md:674
+msgid "Як виконується IV Curve Scan"
+msgstr ""
+
+#: ../../HuaweiBook.md:676
+msgid "Інвертор встановлює режим I ≈ Isc (майже коротке замикання)."
+msgstr ""
+
+#: ../../HuaweiBook.md:677
+msgid ""
+"Поступово збільшує напругу навантаження малими кроками — типово 100–512 "
+"точок вимірювання."
+msgstr ""
+
+#: ../../HuaweiBook.md:678
+msgid "При досягненні U ≈ Voc (нульовий струм) — скан завершено."
+msgstr ""
+
+#: ../../HuaweiBook.md:679
+msgid "Час сканування одного рядка: 10–60 секунд."
+msgstr ""
+
+#: ../../HuaweiBook.md:680
+msgid "Результати передаються в FusionSolar або SmartLogger для побудови графіка."
+msgstr ""
+
+#: ../../HuaweiBook.md:682
+msgid ""
+"✓ **Підказка:** Оптимальний час — ясний день між 10:00 та 14:00, "
+"освітленість ≥ 600 Вт/м²."
+msgstr ""
+
+#: ../../HuaweiBook.md:684
+msgid "Параметри, що аналізуються"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Що характеризує"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Норма відхилення"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Кількість фотонів, що генерують ЕРС"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "< 3%"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Якість р-n переходу, температура"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "< 2%"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Ефективність при оптимальному навантаженні"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "< 5%"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Внутрішній опір та якість контактів"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Загальна ефективність рядка"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Якість р-n переходу та опори Rs/Rsh"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Rs"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Якість контактів, стан з'єднань"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "< 10%"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Rsh"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Наявність мікротріщин, забруднення"
+msgstr ""
+
+#: ../../HuaweiBook.md:699
+msgid "9.6 Типові аномалії та їх сигнатури на IV-кривій"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Аномалія"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Форма кривої"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Затінення"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "↓↓"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "↓"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "норма"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Сходинки"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "PID"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "↓↓↓"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Прогин у центрі"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Мікротріщини"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "↑"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Нерівне плато"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Погані контакти"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "↑↑↑"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Нахил плато→спад"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Забруднення"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Рівне пониження"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Несправний діод"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Відсутня сходинка"
+msgstr ""
+
+#: ../../HuaweiBook.md:712
+msgid "9.7 Інструкція з проведення IV Curve Inspection"
+msgstr ""
+
+#: ../../HuaweiBook.md:714
+msgid "Метод 1: Мобільний додаток FusionSolar (локально, без інтернету)"
+msgstr ""
+
+#: ../../HuaweiBook.md:716
+msgid ""
+"**Підключення:** Wi-Fi точка інвертора (SUN2000-XXXXXX) → додаток → "
+"«Local mode» → логін `installer` / пароль `Changeme123` або заданий "
+"монтажником."
+msgstr ""
+
+#: ../../HuaweiBook.md:718
+msgid ""
+"**Запуск:** Обслуговування → Управління → **IV Curve Scan** → оберіть "
+"рядок → «Start Scan» → чекайте 10–60 с."
+msgstr ""
+
+#: ../../HuaweiBook.md:720
+msgid "**Кольорова індикація результату:**"
+msgstr ""
+
+#: ../../HuaweiBook.md:721
+msgid "🟢 < 5% відхилення — норма"
+msgstr ""
+
+#: ../../HuaweiBook.md:722
+msgid "🟡 5–10% — моніторинг"
+msgstr ""
+
+#: ../../HuaweiBook.md:723
+msgid "🔴 > 10% — потрібне втручання"
+msgstr ""
+
+#: ../../HuaweiBook.md:725
+msgid "Метод 2: Хмара FusionSolar (дистанційно)"
+msgstr ""
+
+#: ../../HuaweiBook.md:727
+msgid ""
+"**Запуск:** `login.fusionsolar.com` → Пристрої → Інвертори → Maintenance "
+"→ **IV Curve Scan** → оберіть рядок → підтвердіть → чекайте 2–5 хвилин."
+msgstr ""
+
+#: ../../HuaweiBook.md:729
+msgid ""
+"**Переваги:** Batch IV Scan для всіх рядків, автоматичний розклад сканів,"
+" PDF-звіти, тренд деградації Pmpp/FF/Voc з часом."
+msgstr ""
+
+#: ../../HuaweiBook.md:731
+msgid "Метод 3: SmartLogger (локально, через Ethernet)"
+msgstr ""
+
+#: ../../HuaweiBook.md:733
+msgid ""
+"**Підключення:** `https://192.168.8.1:6443` → прийняти сертифікат → логін"
+" `admin`."
+msgstr ""
+
+#: ../../HuaweiBook.md:735
+msgid ""
+"**Запуск:** Monitoring → Device List → інвертор → Maintenance → **IV "
+"Curve Scan** → Start."
+msgstr ""
+
+#: ../../HuaweiBook.md:737
+msgid ""
+"**Автоматизація:** Settings → Automatic Inspection → IV Curve Scan "
+"Schedule → задайте розклад та мінімальну освітленість ≥ 600 Вт/м²."
+msgstr ""
+
+#: ../../HuaweiBook.md:739
+msgid "Порівняння методів"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Критерій"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Мобільний додаток"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "FusionSolar (хмара)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SmartLogger"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Потреба в інтернеті"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Ні"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Так"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Дистанційне керування"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Частково"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Пакетне сканування"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Обмежено"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Так, повністю"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Аналіз тренду"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Ідеальне застосування"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Виїзна діагностика"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Регулярний моніторинг"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Промислові об'єкти без інтернету"
+msgstr ""
+
+#: ../../HuaweiBook.md:749
+msgid "Регламент сканування"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Тип станції"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Частота"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Метод"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Житлова (< 30 кВт)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "2 рази на рік"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Мобільний додаток або FusionSolar"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Комерційна (30–500 кВт)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Щоквартально"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "FusionSolar (автоматично)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Промислова (> 500 кВт)"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Щомісяця"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "SmartLogger + FusionSolar"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Після аварійних подій"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Негайно"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Будь-який метод + термокамера"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Введення в експлуатацію"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Обов'язково"
+msgstr ""
+
+#: ../../HuaweiBook.md
+msgid "Мобільний додаток + SmartLogger"
+msgstr ""
+
+#: ../../HuaweiBook.md:761
+msgid "Глава 10. Що далі: Автоматизований аналіз та регламент робіт"
+msgstr ""
+
+#: ../../HuaweiBook.md:763
+msgid ""
+"Ця книга, як і проект [Huawei Log "
+"Parser](https://andysu3.mooo.com/hua3/), створювалися за активної участі "
+"систем Штучного Інтелекту (LLM). Парсер успішно вирішує задачу вилучення,"
+" структурування та перетворення закритих бінарних `.emap` форматів у "
+"зрозумілий для читання (human-readable) вигляд."
+msgstr ""
+
+#: ../../HuaweiBook.md:765
+msgid "Однак **отримання даних — це лише перший крок**."
+msgstr ""
+
+#: ../../HuaweiBook.md:767
+msgid ""
+"Наступним логічним та найбільш цінним кроком є **автоматизований аналіз "
+"цих даних**. Оскільки дані тепер розпарсені, ми можемо передати їх назад "
+"до ШІ-асистента (або спеціалізованого аналітичного пайплайну) для "
+"досягнення таких цілей:"
+msgstr ""
+
+#: ../../HuaweiBook.md:769
+msgid ""
+"**Глибокий аналіз стану станції:** ШІ може співставити логи помилок "
+"`alarmg_history` із даними продуктивності `perfmg_data` та осцилограмами "
+"`dsp_wave_data`, щоб визначити першопричину проблеми (Root Cause "
+"Analysis)."
+msgstr ""
+
+#: ../../HuaweiBook.md:770
+msgid ""
+"**Генерація детальних звітів:** Автоматичне створення звітів про "
+"деградацію стрінгів (IV-curve analysis) чи проблеми з мережею (Grid "
+"Overvoltage) для подачі претензій."
+msgstr ""
+
+#: ../../HuaweiBook.md:771
+msgid ""
+"**Складання регламенту робіт (O&M):** На основі аналізу машинного часу "
+"компонентів (напр., вентиляторів) та конденсаторів, ШІ формуватиме список"
+" необхідних ремонтних робіт та список запчастин **ще до того, як "
+"станеться аварія** (CBM - Condition-Based Maintenance)."
+msgstr ""
+
+#: ../../HuaweiBook.md:773
+msgid ""
+"Таким чином, розпарсені логи перетворюються на прямі інструкції для "
+"сервісного інженера, мінімізуючи час простою станції та максимізуючи "
+"прибуток."
+msgstr ""
+
+#: ../../HuaweiBook.md:777
+msgid "Додатки"
+msgstr ""
+
+#: ../../HuaweiBook.md:779
+msgid "📚 Словник термінів"
+msgstr ""
+
+#: ../../HuaweiBook.md:781
+msgid ""
+"**AFCI (Arc Fault Circuit Interrupter)** — інтелектуальний захист від "
+"виникнення електричної дуги в колах постійного струму (DC)."
+msgstr ""
+
+#: ../../HuaweiBook.md:782
+msgid ""
+"**ARM** — високорівневий процесор інвертора, що керує файловою системою "
+"EMAP, стеком Modbus та мережевим зв'язком."
+msgstr ""
+
+#: ../../HuaweiBook.md:783
+msgid ""
+"**DSP (Digital Signal Processor)** — надшвидкий сигнальний процесор для "
+"керування силовою електронікою (ШІМ) та захисту за мілісекунди."
+msgstr ""
+
+#: ../../HuaweiBook.md:784
+msgid ""
+"**EMAP (Energy Management Assistant Protocol)** — пропрієтарний бінарний "
+"формат файлів логів та даних Huawei."
+msgstr ""
+
+#: ../../HuaweiBook.md:785
+msgid ""
+"**Gain (Коефіцієнт масштабування)** — множник в Modbus для передачі "
+"дробових чисел у вигляді цілих."
+msgstr ""
+
+#: ../../HuaweiBook.md:786
+msgid ""
+"**MPPT (Maximum Power Point Tracking)** — алгоритм безперервного пошуку "
+"точки максимальної потужності сонячних панелей."
+msgstr ""
+
+#: ../../HuaweiBook.md:787
+msgid ""
+"**O&M (Operation & Maintenance)** — технічна експлуатація та сервісне "
+"обслуговування об'єкта."
+msgstr ""
+
+#: ../../HuaweiBook.md:788
+msgid ""
+"**PM (Predictive Maintenance / CBM)** — прогностичне обслуговування на "
+"основі аналізу стану даних."
+msgstr ""
+
+#: ../../HuaweiBook.md:789
+msgid ""
+"**Rin (Insulation Resistance)** — опір ізоляції між фотоелектричними "
+"панелями та землею."
+msgstr ""
+
+#: ../../HuaweiBook.md:790
+msgid ""
+"**SmartLogger** — промисловий реєстратор даних для керування каскадом "
+"інверторів на великих СЕС."
+msgstr ""
+
+#: ../../HuaweiBook.md:791
+msgid ""
+"**SOC (State of Charge)** — поточний рівень заряду акумуляторної батареї "
+"у відсотках."
+msgstr ""
+
+#: ../../HuaweiBook.md:792
+msgid ""
+"**SOH (State of Health)** — залишковий ресурс (здоров'я) акумулятора у "
+"відсотках від початкової ємності."
+msgstr ""
+
+#: ../../HuaweiBook.md:793
+msgid "**String (Стрінг)** — послідовно з'єднаний ланцюжок сонячних панелей."
+msgstr ""
+
+#: ../../HuaweiBook.md:797
+msgid "🚨 Найпоширеніші коди помилок"
+msgstr ""
+
+#: ../../HuaweiBook.md:799
+msgid "*(Для детального аналізу використовуйте файл `alarmg_history`)*"
+msgstr ""
+
+#: ../../HuaweiBook.md:801
+msgid ""
+"`2001` — **High String Input Voltage** (перенапруга на стрінгу: забагато "
+"панелей у послідовному ланцюзі)."
+msgstr ""
+
+#: ../../HuaweiBook.md:802
+msgid ""
+"`2011` — **String Reverse Connection** (зворотна полярність стрінга: "
+"переплутані `+` та `-`)."
+msgstr ""
+
+#: ../../HuaweiBook.md:803
+msgid "`2002` — **DC Arc Fault** (виявлено електричну дугу на стороні DC)."
+msgstr ""
+
+#: ../../HuaweiBook.md:804
+msgid "`2032` — **Grid Loss** (зникла зовнішня електромережа)."
+msgstr ""
+
+#: ../../HuaweiBook.md:805
+msgid "`2033` — **Grid Undervoltage** (просідання напруги мережі нижче норми)."
+msgstr ""
+
+#: ../../HuaweiBook.md:806
+msgid ""
+"`2034` — **Grid Overvoltage** (перенапруга в мережі; часто на довгих "
+"лініях при високій генерації)."
+msgstr ""
+
+#: ../../HuaweiBook.md:807
+msgid ""
+"`2062` / `313` — **Low Insulation Resistance** (низький опір ізоляції < "
+"100 кОм; `313` — для старіших серій 8–28KTL/33–42KTL, `2062` — для "
+"сучасних моделей V2/V3)."
+msgstr ""
+
+#: ../../HuaweiBook.md:808
+msgid "`2064` — **Device Fault** (внутрішня апаратна помилка інвертора)."
+msgstr ""
+
+#: ../../HuaweiBook.md:809
+msgid ""
+"`2039` — **Fan Fault** (несправність або заклинювання вентилятора "
+"охолодження)."
+msgstr ""
+
+#: ../../HuaweiBook.md:813
+msgid "Додаток B: Способи підключення до Modbus"
+msgstr ""
+
+#: ../../HuaweiBook.md:815
+msgid ""
+"Для того щоб парсер зміг працювати, необхідно спочатку налаштувати доступ"
+" до інвертора по Modbus."
+msgstr ""
+
+#: ../../HuaweiBook.md:817
+msgid ""
+"**Sdongle (WLAN/FE)**: Доступ по Modbus TCP. Найчастіше порт `502` або "
+"`6607`. Unit ID зазвичай `0` або `1`. Підходить для регулярного "
+"скриптингу."
+msgstr ""
+
+#: ../../HuaweiBook.md:818
+msgid ""
+"**Вбудований Wi-Fi (SUN2000-XXXXXX)**: Пряме локальне підключення до "
+"точки доступу інвертора (IP `192.168.200.1`, порт `6607`)."
+msgstr ""
+
+#: ../../HuaweiBook.md:819
+msgid ""
+"**SmartLogger**: Якщо встановлений, всі інвертори читаються через нього "
+"як через єдиний шлюз по Modbus TCP (порт `502`). Кожен інвертор має свій "
+"Unit ID (Logical Device ID)."
+msgstr ""
+
+#: ../../HuaweiBook.md:820
+msgid ""
+"**RS485 (PIN 1 та 3 на COM-порту)**: Пряме кабельне підключення через "
+"перетворювач RS485-to-USB. Modbus RTU (зазвичай 9600 8N1). Найнадійніший,"
+" але найменш зручний спосіб для щоденного використання."
+msgstr ""
+
+#: ../../HuaweiBook.md:824
+msgid "Фінальне слово"
+msgstr ""
+
+#: ../../HuaweiBook.md:826
+msgid ""
+"Ця книга — лише перший крок до усвідомленого керування сонячною енергією."
+" Технології Huawei постійно розвиваються, але фундамент діагностики, "
+"закладений у логах, залишається незмінним. Використовуйте ці знання, щоб "
+"зробити вашу СЕС надійнішою та прибутковішою."
+msgstr ""
+
+#: ../../HuaweiBook.md:828
+msgid "**Ваш довідник у світі сонячної енергії.**"
+msgstr ""
+

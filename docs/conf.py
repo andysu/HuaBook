@@ -16,6 +16,10 @@ source_suffix = {
 
 master_doc = 'index'
 
+language = 'uk'
+locale_dirs = ['locale/']
+gettext_compact = False
+
 html_theme = 'sphinx_rtd_theme'
 
 # PDF via rinohtype (supports Cyrillic out of the box)
