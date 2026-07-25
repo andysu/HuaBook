@@ -1,6 +1,7 @@
 name: Auto-Translate and RTD Webhook
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
